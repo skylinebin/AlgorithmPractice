@@ -20,3 +20,18 @@ console.log(stack.peek());
 stack.push(7);
 console.log(stack.size());
 console.log(stack.isEmpty());
+stack.print();
+
+
+
+// The BUG　of using Symbols to Create Stack
+
+// get all properties of this stack class
+let objectSymbols = Object.getOwnPropertySymbols(stack);
+console.log(objectSymbols.length);
+console.log(objectSymbols);
+console.log(objectSymbols[0]);
+stack[objectSymbols[0]].push(1);
+stack.print();
+
+// End of testing BUG
