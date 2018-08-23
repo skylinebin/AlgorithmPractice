@@ -6,8 +6,8 @@ The file named **SstfAlgo.java** is about SSTF(Shortest Seek Time First) Algorit
 
 The file named **ScanAlgo.java** is about SCAN Algorithm  
 It can be discribed like this picture :  
-![SCAN Algorithm](http://osaussnqu.bkt.clouddn.com/image/system/scanAlgo.png) 
+![SCAN Algorithm](https://store.skylinebin.com/image/system/scanAlgo.png) 
 
 The file named **CscanAlgo.java** is about CSCAN Algorithm  
 It can be discribed like this picture :  
-![CSCAN Algorithm](http://osaussnqu.bkt.clouddn.com/image/system/cscanAlgo.png)
+![CSCAN Algorithm](https://store.skylinebin.com/image/system/cscanAlgo.png)
