@@ -9,3 +9,7 @@ Using JavaScript to create the Stack Structure
 ## Queue  
 
 Using JavaScript to create the Queue Structure
+
+## LinkedList  
+
+Using JavaScript to create the LinkedList Structure
