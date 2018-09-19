@@ -16,8 +16,19 @@ function LinkedList() {
     let head = null;
 
     // append another element after the end of this linkedlist
-    this.append = function(element) {
-        
+    this.append = function(thiselement) {
+        let node = new Node(thiselement),
+            current;
+        if (head == null){
+            head = node;
+        } else {
+            current = head;    
+            while (current.next) {
+                current = current.next;
+            }
+            current.next = node;
+        }
+        length++;
     }
 
     // insert an element into this position
@@ -25,9 +36,29 @@ function LinkedList() {
 
     }
 
-    // remove  this position
+    // remove the element at  this position
     this.removeAt = function(position){
+        if(position > -1 && position < length){
+            let current = head,
+            previous,
+            index = 0;
 
+            if(position === 0){
+                head = current.next;
+            } else {
+                while(index++ < position){
+                    previous = current;
+                    current = current.next;    
+                }
+
+                previous.next = current.next;
+            }
+            length--;
+
+            return current.element;
+        }else {
+            return null;
+        }
     }
 
     // remove one  element from this linkedlist
@@ -66,3 +97,7 @@ function LinkedList() {
     }
 
 }
+
+let list = new LinkedList();
+list.append(10);
+list.append(15);
