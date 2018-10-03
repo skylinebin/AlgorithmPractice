@@ -2,15 +2,15 @@ package basic_algorithm;
 
 public class SelectionSort {
 	
-//	ÊµÏÖÑ¡ÔñÅÅĞò
+//	ä½¿ç”¨ java å®ç°çš„é€‰æ‹©æ’åº
 	public static void selectionSort(int[] arr) {
 		if (arr == null || arr.length < 2) {
 			return;
 		}
 		for (int i = 0; i < arr.length - 1; i++) {
-//			¹æ¶¨¿ªÊ¼µÄÎ»ÖÃ
+//			ç»™å‡ºåˆå§‹å€¼ç´¢å¼•
 			int minIndex =i;
-//			minIndex ¼ÇÂ¼×îĞ¡ÊıµÄÏÂ±ê
+//			minIndex ä¿å­˜ä» i å¾€åçš„æœ€å°å€¼ç´¢å¼•
 			for (int j = i + 1; j < arr.length; j++) {
 				minIndex = arr[j] < arr[minIndex] ? j : minIndex;
 			}

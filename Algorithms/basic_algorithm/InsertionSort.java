@@ -1,22 +1,23 @@
 package basic_algorithm;
 
 public class InsertionSort {
+//	ä½¿ç”¨ java å®ç°çš„æ’å…¥æ’åº
 	public static void insertionSort(int[] arr) {
 		if (arr == null || arr.length < 2) {
 			return;
 		}
 		for (int i = 1; i < arr.length; i++) {
-//			µ±Ç°  i Î»ÖÃµÄÊı
+//			æŒ‡å®šç¬¬ i ä¸ªæ•°çš„åˆå§‹å€¼
 			for (int j = i - 1; j >= 0 && arr[j] > arr[j + 1]; j--) {
-//				Èô  i-1 ±È i Î»ÖÃÊı´ó£¬Ôò½»»»£¬j--¼ÌĞøÍùÇ°¿´
-//				j >= 0 ²»Ô½½ç£¬arr[j] > arr[j + 1] ÅĞ¶ÏÁ½¸öÊıÊÇ·ñ×ó±ß×îĞ¡
+//				ä» i ä¸ªæ•°å¼€å§‹å¾€å‰è¿›è¡Œæ’åº
+//				j >= 0 é˜²æ­¢è¶Šç•Œ arr[j] > arr[j + 1] ä¿è¯å·¦è¾¹çš„æœ€å°
 				swap(arr, j, j+1);
 			}
 		}
 	}
 	
 	public static void swap(int[] arr, int i, int j) {
-//		ÁíÒ»ÖÖ½»»»Á½¸öÊıµÄ·½·¨
+//		äº¤æ¢ä¸¤ä¸ªæ•°çš„å¦ä¸€ç§å†™æ³•
 //		arr[i] = arr[i] ^ arr[j];
 //		arr[j] = arr[i] ^ arr[j];
 //		arr[i] = arr[i] ^ arr[j];
