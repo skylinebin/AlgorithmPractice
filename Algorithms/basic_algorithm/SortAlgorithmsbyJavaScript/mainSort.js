@@ -7,14 +7,24 @@
  */
 
  const BubbleSort = require('./BubbleSort');
+ const SelectionSort = require('./SelectionSort');
 
  let arrone = [3,6,2,4,0,5,9];
 
  console.log(arrone);
 
- console.log('--------start BubbleSort-----------');
+//  console.log('--------start BubbleSort-----------');
 
- BubbleSort(arrone);
+//  BubbleSort(arrone);
 
- console.log('--------end BubbleSort-----------');
+//  console.log('--------end BubbleSort-----------');
+
+
+ console.log('--------start SelectionSort-----------');
+
+ SelectionSort(arrone);
+
+ console.log('--------end SelectionSort-----------');
+
+
  console.log(arrone);
