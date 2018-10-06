@@ -3,6 +3,8 @@
  * @time 2018-10-6
  * @function use javascript to bubble sort arrays
  * 
+ * @Algorithm_bigO O(N^2) 
+ *  N is the length of arrays
  * 
  */
 
