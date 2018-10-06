@@ -8,6 +8,7 @@
 
  const BubbleSort = require('./BubbleSort');
  const SelectionSort = require('./SelectionSort');
+ const InsertionSort = require('./InsertionSort');
 
  let arrone = [3,6,2,4,0,5,9];
 
@@ -20,11 +21,17 @@
 //  console.log('--------end BubbleSort-----------');
 
 
- console.log('--------start SelectionSort-----------');
+//  console.log('--------start SelectionSort-----------');
 
- SelectionSort(arrone);
+//  SelectionSort(arrone);
 
- console.log('--------end SelectionSort-----------');
+//  console.log('--------end SelectionSort-----------');
+
+  console.log('--------start InsertionSort-----------');
+
+  InsertionSort(arrone);
+
+  console.log('--------end InsertionSort-----------');
 
 
  console.log(arrone);
