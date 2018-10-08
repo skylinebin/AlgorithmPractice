@@ -33,11 +33,36 @@ function LinkedList() {
 
     // insert an element into this position
     this.insert = function(position, element) {
+        if (position > -1 && position < length) {
+            let node = new Node(element),
+            current = head,
+            previous,
+            index = 0;
 
-    }
+            if (position === 0) {
+                // insert element at the head of this LinkedList
+                node.next = current;
+                head = node;
+            } else {
+                while (index++ < position) {
+                    previous = current;
+                    current = current.next;
+                }
+
+                // insert elemrnt in this position
+                node.next = current;
+                previous.next = node;
+            }
+            length++;
+            return true;
+        } else {
+            return false;
+        }
+    };
 
     // remove the element at  this position
     this.removeAt = function(position){
+        // check Cross-border
         if(position > -1 && position < length){
             let current = head,
             previous,
@@ -50,7 +75,7 @@ function LinkedList() {
                     previous = current;
                     current = current.next;    
                 }
-
+                // current element will be recyclied by JavaScript GC
                 previous.next = current.next;
             }
             length--;
@@ -59,7 +84,7 @@ function LinkedList() {
         }else {
             return null;
         }
-    }
+    };
 
     // remove one  element from this linkedlist
     this.remove = function(element){
@@ -88,6 +113,14 @@ function LinkedList() {
 
     // to String
     this.toString = function() {
+        let current = head;
+        string = '';
+        while (current) {
+            string += current.element + (current.next ? '_': '');
+            current = current.next;
+        }
+        return string;
+
 
     }
 
