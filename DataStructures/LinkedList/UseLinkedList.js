@@ -88,27 +88,39 @@ function LinkedList() {
 
     // remove one  element from this linkedlist
     this.remove = function(element){
-
-    }
+        // find the position
+        // remove this element at the position
+        let index = this.indexOf(element);
+        return this.removeAt(index);
+    };
 
     // find the index of this linkedlist
     this.indexOf = function(element) {
-        
-    }
+        let current = head;
+        index = -1;
+        while (current) {
+            if (element === current.element) {
+                return index;
+            }
+            index++;
+            current = current.next;
+        }
+        return -1;
+    };
 
     // check this linkedlist is empty
     this.isEmpty = function(){
-
-    }
+        return length === 0;
+    };
 
     // get the size of this linkedlist
     this.size = function(){
-
+        return length;
     }
 
     // get the head of this LinkedList
     this.getHead = function(){
-
+        return head;
     }
 
     // to String
