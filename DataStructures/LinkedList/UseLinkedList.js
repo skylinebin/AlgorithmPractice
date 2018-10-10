@@ -138,7 +138,16 @@ function LinkedList() {
 
     // print this LinkedList
     this.print = function(){
-
+        let current = head;
+        let outstr = '';
+        while (current) {
+            // console.log(current.element);
+            outstr += String(current.element) + (current.next ? ' ':'');
+            current = current.next;
+        }
+        console.log('------------------------------------');
+        console.log(outstr);
+        console.log('------------------------------------');
     }
 
 }
@@ -146,3 +155,8 @@ function LinkedList() {
 let list = new LinkedList();
 list.append(10);
 list.append(15);
+list.append(4);
+list.append(16);
+list.append(13);
+
+list.print();
