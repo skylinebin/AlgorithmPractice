@@ -12,4 +12,8 @@ Using JavaScript to create the Queue Structure
 
 ## LinkedList  
 
-Using JavaScript to create the LinkedList Structure
+Using JavaScript to create the LinkedList Structure  
+
+## Set  
+
+Using JavaScript to create the Set Structure
