@@ -74,7 +74,62 @@
         return values;
     };
 
+    // union this set and otherSet
+    this.union = function (otherSet) {
+        let unionSet = new SetS();
 
+        let values = this.values();
+        for (let index = 0; index < values.length; index++) {
+            unionSet.add(values[index]);
+        }
+
+        values = otherSet.values();
+        for (let j = 0; j < values.length; j++) {
+            unionSet.add(values[j]);            
+        }
+        return unionSet;
+    };
+
+    // intersection two sets
+    this.intersection = function (otherSet) {
+        let intersectionSet = new SetS();
+
+        let values = this.values();
+        for (let index = 0; index < values.length; index++) {
+            if (otherSet.has(values[index])) {
+                intersectionSet.add(values[index]);
+            }
+        }
+        return intersectionSet;
+    }
+
+    // difference of set and setone
+    this.difference =function (otherSet) {
+        let differenceSet = new SetS();
+
+        let values = this.values();
+        for (let index = 0; index < values.length; index++) {
+            if (!otherSet.has(values[index])) {
+                differenceSet.add(values[index]);
+            }
+        }
+        return differenceSet;
+    };
+
+    // judge if set if a subset if otherSet
+    this.subset = function (otherSet) {
+        if (this.size() > otherSet.size()) {
+            return false;
+        } else {
+            let values = this.values();
+            for (let index = 0; index < values.length; index++) {
+                if (!otherSet.has(values[index])) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
 
  }
 
@@ -82,6 +137,7 @@
  let set = new SetS();
  set.add(1);
  set.add(2);
+ set.add(3);
  set.add(6);
  set.add(7);
  console.log('------------------------------------');
@@ -97,6 +153,29 @@ console.log('------------------------------------');
 console.log(set.values());
 console.log('------------------------------------');
 set.remove(2);
-console.log('------------------------------------');
+console.log('-------------set valuse-----------------------');
 console.log(set.values());
+console.log('------------------------------------');
+
+
+
+let settwo = new SetS();
+settwo.add(79);
+settwo.add(5);
+settwo.add(3);
+settwo.add(16);
+settwo.add(49);
+
+console.log('-------------settwo valuse-----------------------');
+console.log(settwo.values());
+console.log('------------------------------------');
+
+let unionOneTwo = set.union(settwo);
+console.log('--------------set union setone--------------------');
+console.log(unionOneTwo.values());
+console.log('------------------------------------');
+
+let intersectionSetone = set.intersection(settwo);
+console.log('---------------set intersectate settwo---------------------');
+console.log(intersectionSetone.values());
 console.log('------------------------------------');
