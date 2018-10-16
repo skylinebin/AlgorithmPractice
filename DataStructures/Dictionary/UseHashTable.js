@@ -35,6 +35,16 @@
     this.remove = function (key) {
         table[loseloseHashCode(key)] = undefined;
     }
+
+    // print values of this HashTable
+    this.print = function () {
+        for (let index = 0; index < table.length; index++) {
+            if (table[index] !== undefined) {
+                console.log(index + " : "+table[index]);
+            }
+            
+        }
+    }
  }
 
  let hash = new HashTable();
@@ -47,3 +57,9 @@ console.log('------------------------------------');
 console.log(hash.get('Mike'));
 console.log(hash.get('Rick'));
 console.log('------------------------------------');
+
+hash.put('Jonathan', 'jonathan@gmail.com');
+hash.put('Jamie', 'jamie@gmail.com');
+hash.put('Sue', 'sue@gmail.com');
+
+hash.print();
