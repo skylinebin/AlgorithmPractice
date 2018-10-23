@@ -16,4 +16,8 @@ Using JavaScript to create the LinkedList Structure
 
 ## Set  
 
-Using JavaScript to create the Set Structure
+Using JavaScript to create the Set Structure  
+
+## Dictionary  
+
+Using JavaScript to create the Dictionary Structure and HashTable Structure
