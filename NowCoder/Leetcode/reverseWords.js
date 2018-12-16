@@ -7,15 +7,23 @@
  * 
  */
 
- function ReverseSentence(str) {
-     // write code here
-     if (str == null || str == '') {
-         return "";
-     } else {
-         return str.split(" ").reverse().join(" ");
-     }
- }
+function ReverseSentence(str) {
+    // write code here
+    if (str == null || str == '') {
+        return "";
+    } else {
+        return str.split(" ").reverse().join(" ");
+    }
+}
 
- console.log('------------------------------------');
- console.log(ReverseSentence("student a am I"));
- console.log('------------------------------------');
+console.log('------------------------------------');
+console.log(ReverseSentence("student a am I"));
+console.log('------------------------------------');
+
+/* 
+ * 涉及理论： 字符串处理
+ * 普通解法： 使用 reverse 函数
+ * 改进方向：
+ *
+ *
+ */

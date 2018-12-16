@@ -5,11 +5,19 @@
  *  
  */
 
- // first version
+// first version
 
- function replaceSpace(str) {
-     // write code here
-     var regstr = new RegExp(' ', "g");
-     var backstr = str.replace(regstr, '%20');
-     return backstr;
- }
+function replaceSpace(str) {
+    // write code here
+    var regstr = new RegExp(' ', "g");
+    var backstr = str.replace(regstr, '%20');
+    return backstr;
+}
+
+/* 
+ * 涉及理论： 字符串处理
+ * 普通解法： 替换
+ * 改进方向：
+ *
+ *
+ */

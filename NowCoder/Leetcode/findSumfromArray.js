@@ -15,7 +15,7 @@ function FindNumbersWithSum(array, sum)
     var nummulti=[];
     if(arrlength === 0 || array == null){
         return '';
-    }else{
+    } else {
         for(var i=0;i< arrlength-1;i++){
             for(var j=i+1;j<arrlength;j++){
                 if(array[i] + array[j] == sum){
@@ -33,17 +33,24 @@ function FindNumbersWithSum(array, sum)
         if(nummulti.length <= 0){
             return '';
         }else{
-
-        var leastone =0;
-        var leastnum = nummulti[0];
-        for(var k=0;k<nummulti.length;k++){
-            if(leastnum >nummulti[k]){
-                leastnum = nummulti[k];
-                leastone = k;
+            var leastone =0;
+            var leastnum = nummulti[0];
+            for(var k=0;k<nummulti.length;k++){
+                if(leastnum >nummulti[k]){
+                    leastnum = nummulti[k];
+                    leastone = k;
+                }
             }
+            return numones[leastone],numtwos[leastone];
         }
-        return numones[leastone],numtwos[leastone];
-    ｝
     }
-
 }
+
+
+ /* 
+  * 涉及理论： 搜索及排序
+  * 普通解法： 遍历
+  * 改进方向：
+  *
+  *
+  */

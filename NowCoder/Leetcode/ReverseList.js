@@ -1,6 +1,6 @@
 /***
  * 
- * @author SkylineBin\
+ * @author SkylineBin
  * @time 2018-10-25
  * @function reverse LinkList by JavaScript
  * 
@@ -26,3 +26,11 @@ function ReverseList(pHead) {
     return preList;
 
 }
+
+/* 
+ * 涉及理论： 链表、循环
+ * 普通解法： 遍历
+ * 改进方向：
+ *
+ *
+ */

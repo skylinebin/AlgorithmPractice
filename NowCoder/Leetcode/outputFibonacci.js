@@ -4,21 +4,29 @@
  * 
  */
 
- // first version
- function Fibonacci(n) {
-     // write code here
-     var beforelastnum = 0;
-     var lastnum = 1;
-     if (n <= 0) {
-         return 0;
-     } else if (n == 1) {
-         return 1;
-     } else {
-         for (var i = 2; i <= n; i++) {
-             result = beforelastnum + lastnum;
-             beforelastnum = lastnum;
-             lastnum = result;
-         }
-         return result;
-     }
- }
+// first version
+function Fibonacci(n) {
+    // write code here
+    var beforelastnum = 0;
+    var lastnum = 1;
+    if (n <= 0) {
+        return 0;
+    } else if (n == 1) {
+        return 1;
+    } else {
+        for (var i = 2; i <= n; i++) {
+            result = beforelastnum + lastnum;
+            beforelastnum = lastnum;
+            lastnum = result;
+        }
+        return result;
+    }
+}
+
+/* 
+ * 涉及理论： 循环
+ * 普通解法： 遍历
+ * 改进方向：
+ *
+ *
+ */

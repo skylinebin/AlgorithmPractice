@@ -18,5 +18,13 @@ function jumpFloorII(number) {
     } else {
         return jumpFloorII(number - 1);
     }
-
 }
+
+
+/* 
+ * 涉及理论： 递归
+ * 普通解法： 遍历
+ * 改进方向：
+ *
+ *
+ */

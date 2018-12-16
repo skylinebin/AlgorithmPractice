@@ -5,7 +5,7 @@
  * 
  */
 
- // first version
+// first version
 
 
 function Power(base, exponent) {
@@ -35,3 +35,11 @@ function Power(base, exponent) {
 }
 
 //  failed
+
+ /* 
+  * 涉及理论： 递归、边界
+  * 普通解法： 判断+遍历
+  * 改进方向：
+  *
+  *
+  */
