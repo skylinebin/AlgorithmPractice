@@ -43,3 +43,10 @@ function Power(base, exponent) {
   *
   *
   */
+
+// second Practice  
+function Power2(base, exponent) {
+    // write code here
+    
+
+}
