@@ -51,6 +51,6 @@ function outallInversion(arrays, ln, midn, rn) {
 
 
 //  let testArrays = [1, 3, 4, 2, 5];
- let testArrays = [3, 1, 2, 4, 0, 7, 5];
- console.log('this array is: ' + testArrays);
- console.log('the small sum of this array is: ' + printInversion(testArrays));
+let testArrays = [3, 1, 2, 4, 0, 7, 5];
+console.log('this array is: ' + testArrays);
+console.log('the small sum of this array is: ' + printInversion(testArrays));

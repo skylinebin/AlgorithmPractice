@@ -8,26 +8,26 @@
  * 
  */
 
- module.exports = function MergeSort(arrays) {
+module.exports = function MergeSort(arrays) {
     if (arrays == null || arrays.length < 2) {
         return;
     }
     // Recursive process
     sortProgress(arrays, 0, arrays.length - 1);
- }
+}
 
- function sortProgress(arrays, Ln, Rn) {
-     if (Ln == Rn){
-         return;
-     }
-     let midn = Ln + ((Rn - Ln) >> 1);
-     sortProgress(arrays, Ln, midn);
-     sortProgress(arrays, midn + 1, Rn);
-     merge(arrays, Ln, midn, Rn);
-     console.log(arrays);
- }
+function sortProgress(arrays, Ln, Rn) {
+    if (Ln == Rn){
+        return;
+    }
+    let midn = Ln + ((Rn - Ln) >> 1);
+    sortProgress(arrays, Ln, midn);
+    sortProgress(arrays, midn + 1, Rn);
+    merge(arrays, Ln, midn, Rn);
+    console.log(arrays);
+}
 
- function merge(arrays, Ln, midn, Rn) {
+function merge(arrays, Ln, midn, Rn) {
     let temparrays = new Array();
     let ti = 0;
     let pone = Ln;
@@ -48,4 +48,4 @@
     for (let index = 0; index < temparrays.length; index++) {
         arrays[Ln + index] = temparrays[index];
     }
- }
+}

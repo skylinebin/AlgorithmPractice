@@ -22,8 +22,8 @@ module.exports = function SelectionSort(arrays){
     }
 }
 
- function swap(arrays, si, sj) {
-     let tempdata = arrays[si];
-     arrays[si] = arrays[sj];
-     arrays[sj] = tempdata;
- }
+function swap(arrays, si, sj) {
+    let tempdata = arrays[si];
+    arrays[si] = arrays[sj];
+    arrays[sj] = tempdata;
+}

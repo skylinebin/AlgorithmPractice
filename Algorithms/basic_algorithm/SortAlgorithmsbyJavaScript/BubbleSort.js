@@ -8,7 +8,7 @@
  * 
  */
 
- module.exports = function BubbleSort(arrays){
+module.exports = function BubbleSort(arrays){
     if(arrays == null || arrays.length < 2){
         return;
     }
@@ -21,10 +21,10 @@
         }
         
     }
- }
+}
 
- function swap(arrays, si, sj){
+function swap(arrays, si, sj){
     let tempdata = arrays[si];
     arrays[si] = arrays[sj];
     arrays[sj] = tempdata;
- }
+}

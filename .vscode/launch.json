@@ -2,6 +2,18 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Inversion",
+            "request": "launch",
+            "mainClass": "basic_algorithm.Inversion"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - FindMaxValue",
+            "request": "launch",
+            "mainClass": "basic_algorithm.FindMaxValue"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - BubbleSort",
             "request": "launch",
             "cwd": "${workspaceFolder}",
