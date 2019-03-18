@@ -12,6 +12,7 @@ const SelectionSort = require('./SelectionSort');
 const InsertionSort = require('./InsertionSort');
 const MergeSort = require('./MergeSort');
 const DutchFlagArray = require('./DultFlagArray');
+const QuickSort = require('./QuickSort');
 
 
 // 生成指定长度和取值范围的数组  
@@ -61,6 +62,33 @@ function isEqual(arrone, arrtwo) {
     return true;
 }
 
+// 大样本测试  
+function moreDataTest(){
+    let size = 10;
+    let value = 100;
+    let testTime = 500000;
+    let succeed = true;
+    for (let index = 0; index < testTime; index++) {
+        let arrOne = generateRandomArray(size, value);
+        let arrTwo = copyArray(arrOne);
+        let arrThree = copyArray(arrOne);
+        // BubbleSort(arrOne);
+        // MergeSort(arrOne);
+        // InsertionSort(arrOne);
+        QuickSort(arrOne);
+        arrTwo.sort(function (a, b) {
+            return a - b;
+        });
+        if (!isEqual(arrOne, arrTwo)) {
+            succeed = false;
+            console.log(arrThree);
+            break;
+        }        
+    }
+    console.log(succeed ? 'well done! all right' : 'something is wrong!');
+}
+
+
 
 
 let size = 10;
@@ -74,7 +102,9 @@ console.log("--------start Sort-----------");
 // BubbleSort(randomArrays);
 // SelectionSort(randomArrays);
 // MergeSort(randomArrays);
-InsertionSort(randomArrays);
+// InsertionSort(randomArrays);
+QuickSort(randomArrays);
+
 console.log("--------after Sort-----------");
 console.log(randomArrays);
 
@@ -85,4 +115,8 @@ copyarray.sort(function (a, b) {
 console.log(copyarray);
 
 console.log(isEqual(randomArrays, copyarray));
+
+moreDataTest();
+
+
 

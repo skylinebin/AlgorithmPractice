@@ -2,7 +2,7 @@
  * @author SkylineBin
  * @time 2019-03-18
  * @function create QuickSort by JavaScript
- *  实现改进形式的快速排序 
+ *  实现改进形式的快速排序 (三类快排)
  * @Algorithm_bigO 
  *  O(N * log(N))
  * 
