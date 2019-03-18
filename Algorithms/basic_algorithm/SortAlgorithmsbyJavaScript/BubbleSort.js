@@ -2,6 +2,7 @@
  * @author SkylineBin
  * @time 2018-10-6
  * @function use javascript to bubble sort arrays
+ * 对 数组 arrays 进行冒泡排序
  * 
  * @Algorithm_bigO O(N^2) 
  *  N is the length of arrays
