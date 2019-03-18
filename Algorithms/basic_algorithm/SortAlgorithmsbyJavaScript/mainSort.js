@@ -6,14 +6,15 @@
  * 
  */
 
- const BubbleSort = require('./BubbleSort');
- const SelectionSort = require('./SelectionSort');
- const InsertionSort = require('./InsertionSort');
- const MergeSort = require('./MergeSort');
+const BubbleSort = require('./BubbleSort');
+const SelectionSort = require('./SelectionSort');
+const InsertionSort = require('./InsertionSort');
+const MergeSort = require('./MergeSort');
+const DutchFlagArray = require('./DultFlagArray');
 
- let arrone = [3,6,2,4,0,5,9];
+let arrone = [3,6,2,4,0,5,9];
 
- console.log(arrone);
+console.log(arrone);
 
 //  console.log('--------start BubbleSort-----------');
 
@@ -34,10 +35,16 @@
 
 //   console.log('--------end InsertionSort-----------');
 
-    console.log('--------start MergeSort-----------');
+    // console.log('--------start MergeSort-----------');
 
-    MergeSort(arrone);
+    // MergeSort(arrone);
 
-    console.log('--------end MergeSort-----------');
+    // console.log('--------end MergeSort-----------');
 
- console.log(arrone);
+    console.log('--------start DutchFlagArray-----------');
+
+    DutchFlagArray(arrone, 0, 6 , 4);
+
+    console.log('--------end DutchFlagArray-----------');
+
+console.log(arrone);
