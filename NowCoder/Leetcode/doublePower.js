@@ -47,7 +47,31 @@ function Power(base, exponent) {
 // second Practice  
 function Power2(base, exponent) {
     // write code here
-
-
+    if (exponent === 0 && base !== 0) {
+        return 1;
+    }
+    if (exponent === 1) {
+        return base;
+    }
+    if (base === 0 && exponent <= 0) {
+        throw new ErrorEvent();
+    }
+    if (base === 0 && exponent > 0) {
+        return 0;
+    }
+    let index = exponent >= 0 ? exponent : - exponent;
+    let result = Power2(base, index >> 1);
+    result*= result;
+    if ((index&1) === 1) {
+        result*=base;
+    }
+    if (exponent < 0) {
+        result = 1/result;
+    }
+    return result;
 }
+
+let baseNum = 1.5;
+let exponentNum = 2;
+console.log(Power2(baseNum, exponentNum));
 
