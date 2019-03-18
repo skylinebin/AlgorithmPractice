@@ -11,6 +11,7 @@ const SelectionSort = require('./SelectionSort');
 const InsertionSort = require('./InsertionSort');
 const MergeSort = require('./MergeSort');
 const DutchFlagArray = require('./DultFlagArray');
+const QuickSort = require('./QuickSort');
 
 let arrone = [3,6,2,4,0,5,9];
 
@@ -41,10 +42,16 @@ console.log(arrone);
 
     // console.log('--------end MergeSort-----------');
 
-    console.log('--------start DutchFlagArray-----------');
+    // console.log('--------start DutchFlagArray-----------');
 
-    DutchFlagArray(arrone, 0, 6 , 4);
+    // DutchFlagArray(arrone, 0, 6 , 4);
 
-    console.log('--------end DutchFlagArray-----------');
+    // console.log('--------end DutchFlagArray-----------');
+
+    console.log('--------start QuickSort-----------');
+
+    QuickSort(arrone);
+
+    console.log('--------end QuickSort-----------');
 
 console.log(arrone);

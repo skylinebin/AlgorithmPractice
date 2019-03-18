@@ -24,7 +24,8 @@ module.exports = function DutchFlagArray(arrays, L, R, num) {
             L++;
         }
     }
-    return arrays;
+    // return arrays;
+    return [less+1, more-1];
 }
 
 
