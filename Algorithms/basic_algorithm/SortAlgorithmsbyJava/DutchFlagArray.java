@@ -16,6 +16,7 @@ public class DutchFlagArray {
 			}			
 		}
 		return new int[] {less + 1, more - 1};
+		// 返回的是 等于区域的 左右边界下标 数组
 	}
 	
 	public static void swap(int[] arr, int i, int j) {

@@ -27,8 +27,41 @@ module.exports = function DutchFlagArray(arrays, L, R, num) {
     return arrays;
 }
 
+
+/**
+ * @function 用于交互数组中的指定位置的两个数
+ * @param {*} arrays 
+ * @param {*} si 
+ * @param {*} sj 
+ */
 function swap(arrays, si, sj) {
     let tempdata = arrays[si];
     arrays[si] = arrays[sj];
     arrays[sj] = tempdata;
 }
+
+/**
+ * @function 简化版 分两类问题, 左边是小于等于 num 的
+ * @param {arrays} arrays 
+ * @param {midnum} num 
+ */
+function singleArray(arrays, num) {
+    if (arrays == null || arrays.length < 2) {
+        return;
+    }
+    let left = -1;
+    let current = 0;
+    let arrLength = arrays.length;
+    while (current < arrLength) {
+        if (arrays[current] < num) {
+            swap(arrays, ++left, current++);
+        } else {
+            current++;
+        }
+    }
+    return arrays;
+}
+
+// let testArray = [-51, 50, -66, -22, 13, -16, 27, 74, -16, 38];
+// console.log(testArray);
+// console.log(singleArray(testArray,0));

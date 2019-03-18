@@ -6,5 +6,8 @@
  */
 
 module.exports = class LinkedList {
-    
+        constructor() {
+            // using a Array items to store Queue Datas
+            this.items = [];
+        }
 }
