@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - QuickSort",
+            "request": "launch",
+            "mainClass": "basic_algorithm.QuickSort"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Inversion",
             "request": "launch",
             "mainClass": "basic_algorithm.Inversion"

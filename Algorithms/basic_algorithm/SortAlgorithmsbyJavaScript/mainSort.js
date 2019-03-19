@@ -13,7 +13,7 @@ const MergeSort = require('./MergeSort');
 const DutchFlagArray = require('./DultFlagArray');
 const QuickSort = require('./QuickSort');
 
-let arrone = [3,6,2,4,0,5,9];
+let arrone = [3,6,5,2,4,0,5,3,9];
 
 console.log(arrone);
 

@@ -24,7 +24,10 @@ module.exports = function QuickSort(arrays) {
  */
 function quickSortProgress(arrays, Ln, Rn) {
     if (Ln < Rn) {
+        // 添加随机快排的代码
+        swap(arrays, Ln + parseInt(Math.random() * (Rn-Ln+1)), Rn);
         let p = partition(arrays, Ln, Rn);
+        // console.log(p);
         quickSortProgress(arrays, Ln, p[0]-1);
         quickSortProgress(arrays, p[1]+1, Rn);
     }
@@ -49,6 +52,7 @@ function partition(arrays, L, R) {
         }
     }
     swap(arrays, more, R); // 因为是和传过来的 arrays[R] 进行比较所以第一个 大于 arrays[R] 的数arrays[more] 要和 arrays[R] 交换
+    // console.log(arrays);
     return [less + 1, more];
 }
 
