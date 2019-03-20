@@ -12,6 +12,7 @@ const InsertionSort = require('./InsertionSort');
 const MergeSort = require('./MergeSort');
 const DutchFlagArray = require('./DultFlagArray');
 const QuickSort = require('./QuickSort');
+const HeapSort = require('./HeapSort');
 
 let arrone = [3,6,5,2,4,0,5,3,9];
 
@@ -48,10 +49,16 @@ console.log(arrone);
 
     // console.log('--------end DutchFlagArray-----------');
 
-    console.log('--------start QuickSort-----------');
+    // console.log('--------start QuickSort-----------');
 
-    QuickSort(arrone);
+    // QuickSort(arrone);
 
-    console.log('--------end QuickSort-----------');
+    // console.log('--------end QuickSort-----------');
+
+    console.log('--------start HeapSort-----------');
+
+    HeapSort(arrone);
+
+    console.log('--------end HeapSort-----------');
 
 console.log(arrone);
