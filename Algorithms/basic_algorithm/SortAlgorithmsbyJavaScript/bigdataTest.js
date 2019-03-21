@@ -13,7 +13,7 @@ const InsertionSort = require('./InsertionSort');
 const MergeSort = require('./MergeSort');
 const DutchFlagArray = require('./DultFlagArray');
 const QuickSort = require('./QuickSort');
-
+const HeapSort = require('./HeapSort');
 
 // 生成指定长度和取值范围的数组  
 function generateRandomArray(size, value) {
@@ -75,7 +75,8 @@ function moreDataTest(){
         // BubbleSort(arrOne);
         // MergeSort(arrOne);
         // InsertionSort(arrOne);
-        QuickSort(arrOne);
+        // QuickSort(arrOne);
+        HeapSort(arrOne);
         arrTwo.sort(function (a, b) {
             return a - b;
         });
