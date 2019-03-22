@@ -3,9 +3,12 @@
  * @author SkylineBin
  * @time 2018-10-16
  * @function Create HashTable Structure (Apart Link) by JavaScript
+ * @function 使用分离链接的方法来处理Hash表的冲突
  * 
  * 
  */
+
+const LinkedList = require('../LinkedList/CreateLinkedList');
 
 function HashTable() {
     var table = [];
@@ -19,6 +22,7 @@ function HashTable() {
         return hash % 37;
     };
 
+    // 
     var ValuePair = function (key, value) {
         this.key = key;
         this.value = value;
@@ -108,6 +112,7 @@ console.log('------------------------------------');
 console.log(hash.get('Mike'));
 console.log(hash.get('Rick'));
 console.log('------------------------------------');
+
 
 hash.put('Jonathan', 'jonathan@gmail.com');
 hash.put('Jamie', 'jamie@gmail.com');

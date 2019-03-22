@@ -6,7 +6,7 @@
  */
 
  // import the Stack stucture created by Array
- const Stack = require('../CreateStack');
+const Stack = require('../CreateStack');
 
 //  Check Symbols Balance
 function checkSymbolBance(symbolString) {

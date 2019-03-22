@@ -5,7 +5,7 @@
  * 
  */
 
-  module.exports = class Queue {
+module.exports = class Queue {
     constructor() {
         // using a Array items to store Queue Datas
         this.items = [];
@@ -40,4 +40,4 @@
         console.log(this.items.toString());
     }
 
-  }
+}

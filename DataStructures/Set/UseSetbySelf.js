@@ -6,14 +6,14 @@
  * 
  */
 
- function SetS() {
-     let items = {};
+function SetS() {
+    let items = {};
 
-    //  check if value in this set
-     this.has = function (value) {
-        //  return value in items;  // old function
-         return items.hasOwnProperty(value);
-     }
+//  check if value in this set
+    this.has = function (value) {
+    //  return value in items;  // old function
+        return items.hasOwnProperty(value);
+    }
 
     //  add this value
     this.add = function (value) {
@@ -131,20 +131,20 @@
         }
     }
 
- }
+}
 
 
- let set = new SetS();
- set.add(1);
- set.add(2);
- set.add(3);
- set.add(6);
- set.add(7);
- console.log('------------------------------------');
- console.log(set.values());
- console.log('------------------------------------');
- console.log(set.has(1));
- console.log('------------------------------------');
+let set = new SetS();
+set.add(1);
+set.add(2);
+set.add(3);
+set.add(6);
+set.add(7);
+console.log('------------------------------------');
+console.log(set.values());
+console.log('------------------------------------');
+console.log(set.has(1));
+console.log('------------------------------------');
 console.log(set.size());
 console.log('------------------------------------');
 set.add(4);

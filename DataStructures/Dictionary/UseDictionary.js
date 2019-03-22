@@ -57,7 +57,7 @@ function Dictionary() {
 
     // get all keys
     this.keys = function () {
-        return Object.keys(items);
+        return Object.keys(items); // 可直接使用对象的原型方法
     }
 
     // get this item
