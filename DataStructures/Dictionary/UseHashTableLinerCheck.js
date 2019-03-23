@@ -3,7 +3,7 @@
  * @author SkylineBin
  * @time 2018-10-17
  * @function Create HashTable Structure (Liner Check) by JavaScript
- * 
+ * @function 使用线性探查的方法解决冲突
  * 
  */
 
@@ -29,6 +29,7 @@ function HashTable() {
     };
 
     //  put this value at the position computed by this key
+    // 每一个有效值都是 ValuePair 的实例
     this.put = function (key, value) {
         var position = loseloseHashCode(key);
         if (table[position] == undefined) {
@@ -42,7 +43,7 @@ function HashTable() {
         }
     };
 
-    //  get this value by key
+    //  get this value by key 还是要对比键是否相同
     this.get = function (key) {
         var position = loseloseHashCode(key);
 
@@ -70,7 +71,7 @@ function HashTable() {
 
         if (table[position] !== undefined) {
             if (table[position].key === key) {
-                table[index] = undefined;
+                table[position] = undefined;
             } else {
                 var index = ++position;
                 while (table[index] === undefined ||

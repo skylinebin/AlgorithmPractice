@@ -8,6 +8,8 @@
  * 
  */
 
+const djb2HashCode = require('./betterHashFuction');
+
 function HashTable() {
     var table = [];
 
@@ -24,6 +26,7 @@ function HashTable() {
 //  put this value at the position computed by this key
     this.put = function (key, value) {
         var position = loseloseHashCode(key);
+        // var position = djb2HashCode(key);
         console.log(position + '-' + key);
         table[position] = value;
     }
@@ -31,11 +34,13 @@ function HashTable() {
     //  get this value by key
     this.get = function (key) {
         return table[loseloseHashCode(key)];
+        // return table[djb2HashCode(key)];
     }
 
     // remove this value by key
     this.remove = function (key) {
         table[loseloseHashCode(key)] = undefined;
+        // table[djb2HashCode(key)] = undefined;
     }
 
     // print values of this HashTable
@@ -57,7 +62,7 @@ hash.put('Mike', 'mike@gmail.com');
 
 console.log('------------------------------------');
 console.log(hash.get('Mike'));
-console.log(hash.get('Rick'));
+console.log(hash.get('John'));
 console.log('------------------------------------');
 
 // 演示冲突的产生
