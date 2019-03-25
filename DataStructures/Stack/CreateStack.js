@@ -4,7 +4,7 @@
  * @Time 2018-8-20
  * @function Create a Stack Structure
  */
- module.exports = class Stack {
+module.exports = class Stack {
 
     constructor () {
         // using a Array items to store Stack Datas
