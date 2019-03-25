@@ -44,7 +44,20 @@ function BinarySearchTree() {
 
     // 在树中查找一个键，存在为 true 不存在为 false
     this.search = function (key) {
+        return searchNode(root, key);
+    }
 
+    var searchNode = function (node, key) {
+        if (node == null) {
+            return false;
+        }
+        if (key < node.key) {
+            return searchNode(node.left, key);
+        } else if (key > node.key) {
+            return searchNode(node.right, key);
+        } else {
+            return true;
+        }
     }
 
     // 通过中序遍历方式遍历所有节点
@@ -99,16 +112,69 @@ function BinarySearchTree() {
             }
             return node.key;
         }
+        return null;
     }
 
     // 返回树中最大的值(键)
     this.max = function () {
+        return maxNode(root);
+    }
 
+    var maxNode = function (node) {
+        if (node) {
+            while (node && node.right !== null) {
+                node = node.right;
+            }
+            return node.key;
+        }
+        return null;
     }
 
     // 从树中移除某个键
     this.remove = function (key) {
+        root = removeNode(root, key);
+    }
 
+    var removeNode = function(node, key) {
+        if (node == null) {
+            return null;
+        }
+        if (key < node.key) {
+            node.left = removeNode(node.left, key);
+            return node;
+        } else if (key > node.key){
+            node.right = removeNode(node.right, key);
+            return node;
+        } else { // 需要删除的键 等于 node 的键
+            // 第一种情况--要删除的点是叶子节点
+            if (node.left === null && node.right === null) {
+                node = null;
+                return node;
+            }
+
+            // 要移除的节点只有一个子节点
+            if (node.left === null) {
+                node = node.right;
+                return node;
+            }else if (node.right === null) {
+                node = node.right;
+                return node;
+            }
+
+            // 要移除的节点 有两个子节点
+            var aux = findMinNode(node.right);
+            node.key = aux.key;
+            node.right = removeNode(node.right, aux.key); // 将右子树的最小值直接方向当前节点，并且删除右子树中的最小值的那个节点
+            return node;
+        }
+    }
+
+    // 查找一个BST树中的节点及其子树中的最小节点
+    var findMinNode = function (node) {
+        while (node && node.left !== null) {
+            node = node.left;
+        }
+        return node;
     }
 }
 
@@ -139,3 +205,8 @@ tree.preOrderTraverse(printNode);
 console.log('------------------------------------');
 console.log('------------------------------------');
 tree.postOrderTraverse(printNode);
+
+console.log('------------------------------------');
+console.log('------------------------------------');
+console.log(tree.search(1) ? 'Key 1 found.' : 'Key 1 not found');
+console.log(tree.search(8) ? 'Key 8 found.' : 'Key 8 not found');
