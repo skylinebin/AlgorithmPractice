@@ -106,6 +106,30 @@ function Graph() {
             predecessors: pred
         };
     }
+
+    // 深度优先遍历搜索过程
+    this.dfs = function (callback) {
+        var color = initializeColor();
+        for (let i = 0; i < vertices.length; i++) {
+            if (color[vertices[i]] === 'white') {
+                dfsVisit(vertices[i], color, callback);
+            }
+        }
+    }
+
+    // 深度优先遍历访问过程
+    this.dfsVisit = function (u, color, callback) {
+        color[u] = 'gray';
+        if (callback) {
+            callback(u);
+        }
+        var neighbors = adjList.get(u);
+        for (let i = 0; i < neighbors.length; i++) {
+            var w = neighbors[i];
+            
+        }
+    }
+
 }
 
 function printNode (value) {
