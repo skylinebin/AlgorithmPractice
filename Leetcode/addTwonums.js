@@ -19,13 +19,15 @@
  * @return {ListNode}
  */
 
+const arrayToLinkNode = require('./tools/LinkNode');
+
 function ListNode(val) {
     this.val = val;
     this.next = null;
 }
 
-
-var addTwoNumbers = function (l1, l2) {
+// 思路错误,不是先算完求和再转换成链表
+var addTwoNumbersold = function (l1, l2) {
     var num1 =0;
     var num2 =0;
     var i=0,j=0;
@@ -40,37 +42,49 @@ var addTwoNumbers = function (l1, l2) {
         j++;
     }
     var lastnum = num1 + num2;
-    console.log(lastnum);
-    console.log(j);
-    var backlink = new ListNode(lastnum % 10);
-    for (let x = 1; x <= j; x++) {
-            var node = new ListNode(lastnum % Math.pow(10, x));
-            current = backlink;
+    var strnum = lastnum.toString();
+    var arrnum = strnum.split('');
+    console.log(arrnum);
+    arrnum = arrnum.reverse();
+    console.log(arrnum);
+    var arrInt = [],j=0;
+
+    arrnum.map(i=> arrInt[j++] = parseInt(i));
+    let linkNode = new ListNode(arrInt[0]);
+    for (let i = 1; i < arrInt.length; i++) {
+        let node = new ListNode(arrInt[i]);
+        let current;
+        if (linkNode == null){
+            linkNode = node;
+        } else {
+            current = linkNode;
             while (current.next) {
                 current = current.next;
             }
             current.next = node;
-            console.log(current);
-        // if(lastnum % Math.pow(10, x) > 10){
-        //     backlink.val = lastnum % Math.pow(10, x+1);
-        // } else {
-        //     backlink.val = lastnum % Math.pow(10, x);
-        // }
-        // temp.next = backlink;
+        }
     }
     
-    return backlink;
+    return linkNode;
 };
 
 // Test Algorithm
 // var testNum = 5;
 console.log();
-var nodeone = new ListNode(2);
-nodeone.next = new ListNode(4);
-nodeone.next.next = new ListNode(3);
+// var nodeone = arrayToLinkNode([2,4,3]);
+// var nodetwo = arrayToLinkNode([5,6,4]);
+var nodeone = arrayToLinkNode([1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]);
+var nodetwo = arrayToLinkNode([5,6,4]);
 
-var nodetwo = new ListNode(5);
-nodetwo.next = new ListNode(6);
-nodetwo.next.next = new ListNode(4);
+console.log(addTwoNumbersold(nodeone, nodetwo));
 
-console.log(addTwoNumbers(nodeone, nodetwo));
+
+var addTwoNumbers = function (l1, l2) {
+    // 定义进位
+    var carry = 0;
+    var p = l1,q=l2;
+    while (p.next != null || q.next != null) {
+
+    }
+
+}
