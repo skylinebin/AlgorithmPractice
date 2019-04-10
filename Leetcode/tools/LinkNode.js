@@ -29,8 +29,6 @@ function arrayToLinkNode(array) {
             current.next = node;
         }
     }
-
-
     return linkNode;
 }
 

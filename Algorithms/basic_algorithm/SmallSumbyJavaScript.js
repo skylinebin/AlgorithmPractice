@@ -7,22 +7,22 @@
  */
 
 
- function smallSum(arrays) {
-    if (arrays == null || arrays.length < 2) {
+function smallSum(arrays) {
+if (arrays == null || arrays.length < 2) {
+    return 0;
+}
+    return camergeSort(arrays, 0, arrays.length -1);
+}
+
+function camergeSort(arrays, ln, rn) {
+    if (ln == rn) {
         return 0;
     }
-    return camergeSort(arrays, 0, arrays.length -1);
- }
+    let midn = ln + ((rn - ln) >> 1);
+    return camergeSort(arrays, ln, midn) + camergeSort(arrays, midn + 1, rn) + caMerge(arrays, ln, midn, rn);
+}
 
- function camergeSort(arrays, ln, rn) {
-     if (ln == rn) {
-         return 0;
-     }
-     let midn = ln + ((rn - ln) >> 1);
-     return camergeSort(arrays, ln, midn) + camergeSort(arrays, midn + 1, rn) + caMerge(arrays, ln, midn, rn);
- }
-
- function caMerge(arrays, ln, midn, rn){
+function caMerge(arrays, ln, midn, rn){
     let temparrays = new Array();
     let ti = 0;
     let pone = ln;
@@ -46,9 +46,9 @@
         arrays[ln + index] = temparrays[index];
     }
     return resultsum;
- }
+}
 
 
- let testArrays = [1, 3, 4, 2, 5];
- console.log('this array is: '+ testArrays);
- console.log('the small sum of this array is: ' + smallSum(testArrays));
+let testArrays = [1, 3, 4, 2, 5];
+console.log('this array is: '+ testArrays);
+console.log('the small sum of this array is: ' + smallSum(testArrays));
