@@ -3,6 +3,7 @@
  * @author SkylineBin
  * @time 2018-10-6
  * @function use mergesort to caculate small sum of one array
+ * 使用归并排序去计算一个数组中的最小值
  * 
  */
 
