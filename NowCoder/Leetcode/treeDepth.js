@@ -34,9 +34,10 @@ function TreeDepth(pRoot) {
     let depth = 0;
     while(treearr.length !== 0) {
         depth++;
-        for (let i = 0; i < treearr.length; i++) {
+        let tempLen = treearr.length; // 这一层是两个结点还是有一个结点
+        for (let i = 0; i < tempLen; i++) {
             let tempNode = treearr[0];
-            treearr = treearr.slice(1);
+            treearr = treearr.slice(1); // 以上两步实现的是队列的 pop 操作
             if (tempNode.left !== null) {
                 treearr.push(tempNode.left);
             }
