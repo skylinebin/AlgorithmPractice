@@ -32,7 +32,7 @@ function arrayToLinkNode(array) {
     return linkNode;
 }
 
-let arr = [1,2,3,4,5];
-console.log(arrayToLinkNode(arr));
+// let arr = [1,2,3,4,5];
+// console.log(arrayToLinkNode(arr));
 
 module.exports = arrayToLinkNode;
