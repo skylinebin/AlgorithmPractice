@@ -45,10 +45,12 @@ function match(s, pattern) {
     }
 }
 
+// 上述代码未通过
+
+
 // "bcbbabab",".*a*a"
 // var arr1 = 'a';
 // var arr2 = '.';
 var arr1 = 'bcbbabab';
-console.log(arr1[-1]);
 var arr2 = '.*a*a';
 console.log(match(arr1, arr2));
