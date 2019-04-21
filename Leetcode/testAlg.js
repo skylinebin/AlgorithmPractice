@@ -5,7 +5,9 @@
  * 
  */
 
-const arrayToTreeNode = require('./tools/treeNode');
+// const arrayToTreeNode = require('./tools/treeNode');
+const arrayToLinkNode = require('./tools/LinkNode');
+const linkToArray = require('./tools/LinkNodetoArray');
 
 // function TreeDepth(pRoot) {
 //     // write code here
@@ -43,33 +45,96 @@ const arrayToTreeNode = require('./tools/treeNode');
 //     return count;
 // }
 
-function IsBalanced_Solution(pRoot) {
+// function IsBalanced_Solution(pRoot) {
+//     // write code here
+//     if (pRoot === null) {
+//         return true;
+//     }
+
+//     this.getDepth = function (rootNode) {
+//         if (rootNode === null) {
+//             return 0;
+//         }
+//         let left = this.getDepth(rootNode.left);
+//         if (left === -1) {
+//             return -1;
+//         }
+//         let right = this.getDepth(rootNode.right);
+//         if (right === -1) {
+//             return -1;
+//         }
+//         return Math.abs(left - right) > 1 ? -1 : Math.max(left, right) + 1;
+//     }
+
+//     return this.getDepth(pRoot) !== -1;
+// }
+
+function ListNode(x){
+    this.val = x;
+    this.next = null;
+}
+function Merge(pHead1, pHead2)
+{
     // write code here
-    if (pRoot === null) {
-        return true;
+    if (pHead1 === null && pHead2 === null) {
+        return null;
+    }
+    if (pHead1 !== null && pHead2 === null) {
+        return pHead1;
+    }
+    if (pHead1 === null && pHead2 !== null) {
+        return pHead2;
     }
 
-    this.getDepth = function (rootNode) {
-        if (rootNode === null) {
-            return 0;
-        }
-        let left = this.getDepth(rootNode.left);
-        if (left === -1) {
-            return -1;
-        }
-        let right = this.getDepth(rootNode.right);
-        if (right === -1) {
-            return -1;
-        }
-        return Math.abs(left - right) > 1 ? -1 : Math.max(left, right) + 1;
+    var outputLink;
+    
+    if (pHead1.val <= pHead2.val){
+        outputLink = new ListNode(pHead1.val);
+        pHead1 = pHead1.next;
+    }else {
+        outputLink = new ListNode(pHead2.val);
+        pHead2 = pHead2.next;
     }
+    while (pHead1 !==null || pHead2 !== null){
+        var tempLink;
+        tempLink = outputLink;
+        while (tempLink.next !== null) {
+            tempLink = tempLink.next;
+        }
+        if (pHead1 === null) {
+            tempLink.next = pHead2;
+            break;
+        }
+        if (pHead2 === null) {
+            tempLink.next = pHead1;
+            break;
+        }
+        if (pHead1.val <= pHead2.val){
+            tempLink.next = new ListNode(pHead1.val);
+            pHead1 = pHead1.next;
+        }else {
+            tempLink.next = new ListNode(pHead2.val);
+            pHead2 = pHead2.next;
+        }
 
-    return this.getDepth(pRoot) !== -1;
+    }
+    return outputLink;
 }
 
-let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let arr2 = [2, 3, 5, 6, 10, 12, 15];
 
-var tempTree = arrayToTreeNode(arr);
+var tempLink1 = arrayToLinkNode(arr1);
+var tempLink2 = arrayToLinkNode(arr2);
+console.log(tempLink1);
+console.log(tempLink2);
+var mergeLink = Merge(tempLink1, tempLink2);
 
-console.log('递归版本是否平衡二叉树：', IsBalanced_Solution(tempTree));
+console.log(mergeLink);
+
+var toArray = linkToArray(mergeLink);
+
+console.log(toArray);
+
+// console.log('递归版本是否平衡二叉树：', IsBalanced_Solution(tempTree));
 // console.log('非递归版本深度：', treeDep(tempTree));
