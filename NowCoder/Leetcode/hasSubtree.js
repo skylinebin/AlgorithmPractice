@@ -17,14 +17,30 @@ function HasSubtree(pRoot1, pRoot2)
     if(pRoot1 === null || pRoot2 === null){
         return false;
     }
+    var tempState = false;
 
-    this.checkIfEqual = function(tree1, tree2){
-        if (tree1 === tree2) {
+    this.checkIfhastree2 = function(tree1, tree2){
+        if (tree2 === null) {
             return true;
-        } else {
+        } 
+        if (tree1 === null) {
             return false;
         }
-    }
-    
 
+        if (tree1.val !== tree2.val ) {
+            return false;
+        }
+        return this.checkIfhastree2(tree1.left, tree2.left) && this.checkIfhastree2(tree1.right, tree2.right);
+    }
+
+    if (pRoot1.val === pRoot2.val) {
+        tempState = this.checkIfhastree2(pRoot1, pRoot2);
+    }
+    if (!tempState) {
+        tempState = HasSubtree(pRoot1.left, pRoot2);
+    }
+    if (!tempState) {
+        tempState = HasSubtree(pRoot1.right, pRoot2);
+    }
+    return tempState;
 }

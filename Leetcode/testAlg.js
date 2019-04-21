@@ -5,9 +5,9 @@
  * 
  */
 
-// const arrayToTreeNode = require('./tools/treeNode');
-const arrayToLinkNode = require('./tools/LinkNode');
-const linkToArray = require('./tools/LinkNodetoArray');
+const arrayToTreeNode = require('./tools/treeNode');
+// const arrayToLinkNode = require('./tools/LinkNode');
+// const linkToArray = require('./tools/LinkNodetoArray');
 
 // function TreeDepth(pRoot) {
 //     // write code here
@@ -69,72 +69,56 @@ const linkToArray = require('./tools/LinkNodetoArray');
 //     return this.getDepth(pRoot) !== -1;
 // }
 
-function ListNode(x){
+function TreeNode(x) {
     this.val = x;
-    this.next = null;
+    this.left = null;
+    this.right = null;
 }
-function Merge(pHead1, pHead2)
+function HasSubtree(pRoot1, pRoot2)
 {
     // write code here
-    if (pHead1 === null && pHead2 === null) {
-        return null;
+    if(pRoot1 === null || pRoot2 === null){
+        return false;
     }
-    if (pHead1 !== null && pHead2 === null) {
-        return pHead1;
-    }
-    if (pHead1 === null && pHead2 !== null) {
-        return pHead2;
-    }
+    var tempState = false;
 
-    var outputLink;
-    
-    if (pHead1.val <= pHead2.val){
-        outputLink = new ListNode(pHead1.val);
-        pHead1 = pHead1.next;
-    }else {
-        outputLink = new ListNode(pHead2.val);
-        pHead2 = pHead2.next;
-    }
-    while (pHead1 !==null || pHead2 !== null){
-        var tempLink;
-        tempLink = outputLink;
-        while (tempLink.next !== null) {
-            tempLink = tempLink.next;
-        }
-        if (pHead1 === null) {
-            tempLink.next = pHead2;
-            break;
-        }
-        if (pHead2 === null) {
-            tempLink.next = pHead1;
-            break;
-        }
-        if (pHead1.val <= pHead2.val){
-            tempLink.next = new ListNode(pHead1.val);
-            pHead1 = pHead1.next;
-        }else {
-            tempLink.next = new ListNode(pHead2.val);
-            pHead2 = pHead2.next;
+    this.checkIfhastree2 = function(tree1, tree2){
+        if (tree2 === null) {
+            return true;
+        } 
+        if (tree1 === null) {
+            return false;
         }
 
+        if (tree1.val !== tree2.val ) {
+            return false;
+        }
+        return this.checkIfhastree2(tree1.left, tree2.left) && this.checkIfhastree2(tree1.right, tree2.right);
     }
-    return outputLink;
+
+    if (pRoot1.val === pRoot2.val) {
+        tempState = this.checkIfhastree2(pRoot1, pRoot2);
+    }
+    if (!tempState) {
+        tempState = HasSubtree(pRoot1.left, pRoot2);
+    }
+    if (!tempState) {
+        tempState = HasSubtree(pRoot1.right, pRoot2);
+    }
+    return tempState;
 }
 
 let arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-let arr2 = [2, 3, 5, 6, 10, 12, 15];
+let arr2 = [1, 2, 3, 4, 5];
 
-var tempLink1 = arrayToLinkNode(arr1);
-var tempLink2 = arrayToLinkNode(arr2);
-console.log(tempLink1);
-console.log(tempLink2);
-var mergeLink = Merge(tempLink1, tempLink2);
+var tempLink1 = arrayToTreeNode(arr1);
+var tempLink2 = arrayToTreeNode(arr2);
+
+var mergeLink = HasSubtree(tempLink1, tempLink2);
 
 console.log(mergeLink);
 
-var toArray = linkToArray(mergeLink);
 
-console.log(toArray);
 
 // console.log('递归版本是否平衡二叉树：', IsBalanced_Solution(tempTree));
 // console.log('非递归版本深度：', treeDep(tempTree));
