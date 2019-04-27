@@ -14,3 +14,29 @@ while (line = readline()) {
     var m = dictionarySortList(a, b);
     print(m);
 }
+
+
+// 本题为考试多行输入输出规范示例，无需提交，不计分。
+var n = parseInt(readline());
+var ans = 0;
+for (var i = 0; i < n; i++) {
+    lines = readline().split(" ")
+    for (var j = 0; j < lines.length; j++) {
+        ans += parseInt(lines[j]);
+    }
+}
+print(ans);
+
+
+
+// Node.js 版本的读取命令行数据
+
+var readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+rl.on('line', function (line) {
+    var tokens = line.split(' ');
+    console.log(parseInt(tokens[0]) + parseInt(tokens[1]));
+});
