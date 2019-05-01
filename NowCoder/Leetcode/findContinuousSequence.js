@@ -42,3 +42,35 @@ function FindContinuousSequence(sum) {
 // let sum = 1;
 let sum = 100;
 console.log(FindContinuousSequence(sum));
+
+// 双指针思路解法，算法复杂度较低
+
+function FindContinuousSequence2(sum) {
+    let output = [];
+    if (sum <= 0) {
+        return output;
+    }
+    let left = 1;
+    let right = 2;
+    while(left < right){
+        let currentSum = (left + right)*(right - left + 1)/2;
+        if (currentSum < sum) {
+            right++;
+        }
+        if (currentSum === sum) {
+            let list = [];
+            for (let i = left; i <=right; i++) {
+                list.push(i);
+            }
+            output.push(list);
+            left++;
+        }
+        if (currentSum > sum) {
+            left++;
+        }
+    }
+    return output;
+}
+
+let sum2 = 100;
+console.log(FindContinuousSequence2(sum2));
