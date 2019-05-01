@@ -8,8 +8,28 @@
 ***/
 // ! 本质涉及: 排序算法
 
+// ! 和均为S的两个数，乘积最小的数在递增序列的两侧
+
 function FindNumbersWithSum(array, sum) {
     // write code here
+    let result = [];
+    if (array.length <= 1) {
+        return result;
+    }
+    let i = 0;
+    let j = array.length -1;
+    while(i < j){
+        if (array[i] + array[j] === sum) {
+            result.push(array[i]);
+            result.push(array[j]);
+            break;
+        } else if (array[i] + array[j] < sum) {
+            i++;
+        } else {
+            j--;
+        }
+    }
+    return result;
 }
 
 // Test Algorithm
