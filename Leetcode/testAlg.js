@@ -5,9 +5,9 @@
  * 
  */
 
-const arrayToTreeNode = require('./tools/treeNode');
-// const arrayToLinkNode = require('./tools/LinkNode');
-// const linkToArray = require('./tools/LinkNodetoArray');
+// const arrayToTreeNode = require('./tools/treeNode');
+const arrayToLinkNode = require('./tools/LinkNode');
+const linkToArray = require('./tools/LinkNodetoArray');
 
 // function TreeDepth(pRoot) {
 //     // write code here
@@ -116,40 +116,91 @@ function TreeNode(x) {
 
 // 考虑使用层次遍历法
 
-function PrintFromTopToBottom(root) {
-    // write code here
-    if (root === null) {
-        return [];
-    }
-    let tempList = [];
-    let outprint = [];
-    tempList.push(root);
-    while (tempList.length !== 0) {
-        let tempNode = tempList[0];
-        outprint.push(tempNode.val);
-        tempList = tempList.slice(1);
-        if (tempNode.left !== null) {
-            tempList.push(tempNode.left);
-        }
-        if (tempNode.right !== null) {
-            tempList.push(tempNode.right);
-        }
-    }
-    return outprint;
+// function PrintFromTopToBottom(root) {
+//     // write code here
+//     if (root === null) {
+//         return [];
+//     }
+//     let tempList = [];
+//     let outprint = [];
+//     tempList.push(root);
+//     while (tempList.length !== 0) {
+//         let tempNode = tempList[0];
+//         outprint.push(tempNode.val);
+//         tempList = tempList.slice(1);
+//         if (tempNode.left !== null) {
+//             tempList.push(tempNode.left);
+//         }
+//         if (tempNode.right !== null) {
+//             tempList.push(tempNode.right);
+//         }
+//     }
+//     return outprint;
 
+// }
+
+function ListNode(x) {
+    this.val = x;
+    this.next = null;
 }
 
-let arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-let arr2 = [1, 2, 3, 4, 5];
+function deleteDuplication(pHead) {
 
-var tempLink1 = arrayToTreeNode(arr1);
-var tempLink2 = arrayToTreeNode(arr2);
+    if (pHead === null) {
+        return null;
+    }
+    let backLink = pHead;
+    let sameVal = [];
+    let current = pHead;
+
+    // 找出链表值重复的节点的值
+    while (current.next) {
+        let currVal = current.val;
+        current = current.next;
+        if (currVal == current.val && sameVal.indexOf(currVal) === -1) {
+            sameVal.push(currVal);
+        }
+    }
+
+    // 删除重复数组里的值的链表节点
+    let position = 0;
+    let backHead;
+    while (backLink) {
+
+        let currNode;
+        if (sameVal.indexOf(backLink.val) === -1) {
+            if (position === 0) {
+                backHead = new ListNode(backLink.val);
+                currNode = backHead;
+                position++;
+            } else {
+                currNode = backHead;
+                while (currNode.next) {
+                    currNode = currNode.next;
+                }
+                currNode.next = new ListNode(backLink.val);
+            }
+        }
+        backLink = backLink.next;
+    }
+    return backHead;
+}
+
+
+let arr1 = [1, 2, 2, 3, 3, 4, 5, 6, 6,7];
+// let arr2 = [1, 2, 3, 4, 5];
+
+var tempLink1 = arrayToLinkNode(arr1);
+// var tempLink2 = arrayToTreeNode(arr2);
 console.log(tempLink1);
-console.log(tempLink2);
-var list1 = PrintFromTopToBottom(tempLink1);
+
+tempLink1 = deleteDuplication(tempLink1);
+console.log(tempLink1);
+// console.log(tempLink2);
+var list1 = linkToArray(tempLink1);
 console.log(list1);
-var list2 = PrintFromTopToBottom(tempLink2);
-console.log(list2);
+// var list2 = PrintFromTopToBottom(tempLink2);
+// console.log(list2);
 
 
 
