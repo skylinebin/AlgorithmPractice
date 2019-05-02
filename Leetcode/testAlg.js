@@ -193,55 +193,56 @@ function TreeNode(x) {
 }
 function Print(pRoot)
 {
-    let output = [];
+    let outPrint = [];
     if (pRoot === null){
-        return output;
+        return outPrint;
     }
-    let oddArr = []; // 奇数行的结点
-    let evenArr = []; // 偶数行的结点
-    oddArr.push(pRoot);
-    let currentlayer = 1;
+    let oddLine = [];
+    let evenLine = [];
+    oddLine.push(pRoot);
+    let currentOdd = true;
 
-    while(oddArr.length !== 0 || evenArr.length !== 0){
-        if (currentlayer %2 !== 0){
+    while(oddLine.length !== 0 || evenLine.length !== 0){
+        if (currentOdd){
             let tempArr = [];
-            while(oddArr.length !== 0){
-                let tempNode = oddArr.pop();
-                if (tempNode !== null){
+            while(oddLine.length !== 0){
+                let tempNode = oddLine[0];
+                oddLine = oddLine.slice(1);
+                if (tempNode !== null) {
                     tempArr.push(tempNode.val);
                     if (tempNode.left !== null){
-                        evenArr.push(tempNode.left);
+                        evenLine.push(tempNode.left);
                     }
-                    if (tempNode.right !== null) {
-                        evenArr.push(tempNode.right);
+                    if (tempNode.right !== null){
+                        evenLine.push(tempNode.right);
                     }
                 }
             }
             if (tempArr.length !== 0){
-                output.push(tempArr);
-                currentlayer++;
+                outPrint.push(tempArr);
             }
         } else {
             let tempArr = [];
-            while(evenArr.length !== 0){
-                let tempNode = evenArr.pop();
-                if (tempNode !== null){
-                    if (tempNode.right !== null) {
-                        oddArr.push(tempNode.right);
-                    }
+            while(evenLine.length !== 0){
+                let tempNode = evenLine[0];
+                evenLine = evenLine.slice(1);
+                if (tempNode !== null) {
                     tempArr.push(tempNode.val);
                     if (tempNode.left !== null){
-                        oddArr.push(tempNode.left);
+                        oddLine.push(tempNode.left);
+                    }
+                    if (tempNode.right !== null){
+                        oddLine.push(tempNode.right);
                     }
                 }
             }
             if (tempArr.length !== 0){
-                output.push(tempArr);
-                currentlayer++;
+                outPrint.push(tempArr);
             }
         }
+        currentOdd = !currentOdd;
     }
-    return output;
+    return outPrint;
 
 }
 
