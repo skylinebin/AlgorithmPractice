@@ -186,67 +186,97 @@ const arrayToTreeNode = require('./tools/treeNode');
 //     return backHead;
 // }
 
+// function TreeNode(x) {
+//     this.val = x;
+//     this.left = null;
+//     this.right = null;
+// }
+// function Print(pRoot)
+// {
+//     let outPrint = [];
+//     if (pRoot === null){
+//         return outPrint;
+//     }
+//     let oddLine = [];
+//     let evenLine = [];
+//     oddLine.push(pRoot);
+//     let currentOdd = true;
+
+//     while(oddLine.length !== 0 || evenLine.length !== 0){
+//         if (currentOdd){
+//             let tempArr = [];
+//             while(oddLine.length !== 0){
+//                 let tempNode = oddLine[0];
+//                 oddLine = oddLine.slice(1);
+//                 if (tempNode !== null) {
+//                     tempArr.push(tempNode.val);
+//                     if (tempNode.left !== null){
+//                         evenLine.push(tempNode.left);
+//                     }
+//                     if (tempNode.right !== null){
+//                         evenLine.push(tempNode.right);
+//                     }
+//                 }
+//             }
+//             if (tempArr.length !== 0){
+//                 outPrint.push(tempArr);
+//             }
+//         } else {
+//             let tempArr = [];
+//             while(evenLine.length !== 0){
+//                 let tempNode = evenLine[0];
+//                 evenLine = evenLine.slice(1);
+//                 if (tempNode !== null) {
+//                     tempArr.push(tempNode.val);
+//                     if (tempNode.left !== null){
+//                         oddLine.push(tempNode.left);
+//                     }
+//                     if (tempNode.right !== null){
+//                         oddLine.push(tempNode.right);
+//                     }
+//                 }
+//             }
+//             if (tempArr.length !== 0){
+//                 outPrint.push(tempArr);
+//             }
+//         }
+//         currentOdd = !currentOdd;
+//     }
+//     return outPrint;
+
+// }
+
 function TreeNode(x) {
     this.val = x;
     this.left = null;
     this.right = null;
 }
-function Print(pRoot)
+function isSymmetrical(pRoot)
 {
-    let outPrint = [];
-    if (pRoot === null){
-        return outPrint;
+    let symmetrical = false;
+    if (pRoot === null) {
+        return symmetrical;
     }
-    let oddLine = [];
-    let evenLine = [];
-    oddLine.push(pRoot);
-    let currentOdd = true;
 
-    while(oddLine.length !== 0 || evenLine.length !== 0){
-        if (currentOdd){
-            let tempArr = [];
-            while(oddLine.length !== 0){
-                let tempNode = oddLine[0];
-                oddLine = oddLine.slice(1);
-                if (tempNode !== null) {
-                    tempArr.push(tempNode.val);
-                    if (tempNode.left !== null){
-                        evenLine.push(tempNode.left);
-                    }
-                    if (tempNode.right !== null){
-                        evenLine.push(tempNode.right);
-                    }
-                }
-            }
-            if (tempArr.length !== 0){
-                outPrint.push(tempArr);
-            }
-        } else {
-            let tempArr = [];
-            while(evenLine.length !== 0){
-                let tempNode = evenLine[0];
-                evenLine = evenLine.slice(1);
-                if (tempNode !== null) {
-                    tempArr.push(tempNode.val);
-                    if (tempNode.left !== null){
-                        oddLine.push(tempNode.left);
-                    }
-                    if (tempNode.right !== null){
-                        oddLine.push(tempNode.right);
-                    }
-                }
-            }
-            if (tempArr.length !== 0){
-                outPrint.push(tempArr);
-            }
+    this.compareNode = function(leftNode, rightNode){
+        if (leftNode === null){
+            return rightNode === null;
         }
-        currentOdd = !currentOdd;
+        if (rightNode === null){
+            return false;
+        }
+        if (leftNode.val !== rightNode.val){
+            return false;
+        }
+        return this.compareNode(leftNode.left, rightNode.right) && this.compareNode(leftNode.right, rightNode.left);
     }
-    return outPrint;
 
+    return this.compareNode(pRoot.left, pRoot.right);
 }
 
-let arr1 = [1, 1, 2, 3, 3, 4, 5];
+
+// let arr1 = [1, 1, 2, 3, 3, 4, 5];
+let arr1 = [5,6,7,8,7,6,5];
 // let arr2 = [1, 2, 3, 4, 5];
 
 // var tempLink1 = arrayToLinkNode(arr1);
@@ -254,8 +284,8 @@ let arr1 = [1, 1, 2, 3, 3, 4, 5];
 var tempTree = arrayToTreeNode(arr1);
 console.log(tempTree);
 
-tempTreeArr = Print(tempTree);
-console.log(tempTreeArr);
+let result = isSymmetrical(tempTree);
+console.log(result);
 // console.log(tempLink2);
 // var list1 = linkToArray(tempLink1);
 // console.log(list1);
