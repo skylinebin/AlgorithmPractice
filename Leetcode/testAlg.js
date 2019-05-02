@@ -5,9 +5,9 @@
  * 
  */
 
-// const arrayToTreeNode = require('./tools/treeNode');
-const arrayToLinkNode = require('./tools/LinkNode');
-const linkToArray = require('./tools/LinkNodetoArray');
+const arrayToTreeNode = require('./tools/treeNode');
+// const arrayToLinkNode = require('./tools/LinkNode');
+// const linkToArray = require('./tools/LinkNodetoArray');
 
 // function TreeDepth(pRoot) {
 //     // write code here
@@ -108,11 +108,11 @@ const linkToArray = require('./tools/LinkNodetoArray');
 //     return tempState;
 // }
 
-function TreeNode(x) {
-    this.val = x;
-    this.left = null;
-    this.right = null;
-}
+// function TreeNode(x) {
+//     this.val = x;
+//     this.left = null;
+//     this.right = null;
+// }
 
 // 考虑使用层次遍历法
 
@@ -139,66 +139,125 @@ function TreeNode(x) {
 
 // }
 
-function ListNode(x) {
+// function ListNode(x) {
+//     this.val = x;
+//     this.next = null;
+// }
+
+// function deleteDuplication(pHead) {
+
+//     if (pHead === null) {
+//         return null;
+//     }
+//     let backLink = pHead;
+//     let sameVal = [];
+//     let current = pHead;
+
+//     // 找出链表值重复的节点的值
+//     while (current.next) {
+//         let currVal = current.val;
+//         current = current.next;
+//         if (currVal == current.val && sameVal.indexOf(currVal) === -1) {
+//             sameVal.push(currVal);
+//         }
+//     }
+
+//     // 删除重复数组里的值的链表节点
+//     let position = 0;
+//     let backHead;
+//     while (backLink) {
+
+//         let currNode;
+//         if (sameVal.indexOf(backLink.val) === -1) {
+//             if (position === 0) {
+//                 backHead = new ListNode(backLink.val);
+//                 currNode = backHead;
+//                 position++;
+//             } else {
+//                 currNode = backHead;
+//                 while (currNode.next) {
+//                     currNode = currNode.next;
+//                 }
+//                 currNode.next = new ListNode(backLink.val);
+//             }
+//         }
+//         backLink = backLink.next;
+//     }
+//     return backHead;
+// }
+
+function TreeNode(x) {
     this.val = x;
-    this.next = null;
+    this.left = null;
+    this.right = null;
 }
-
-function deleteDuplication(pHead) {
-
-    if (pHead === null) {
-        return null;
+function Print(pRoot)
+{
+    let output = [];
+    if (pRoot === null){
+        return output;
     }
-    let backLink = pHead;
-    let sameVal = [];
-    let current = pHead;
+    let oddArr = []; // 奇数行的结点
+    let evenArr = []; // 偶数行的结点
+    oddArr.push(pRoot);
+    let currentlayer = 1;
 
-    // 找出链表值重复的节点的值
-    while (current.next) {
-        let currVal = current.val;
-        current = current.next;
-        if (currVal == current.val && sameVal.indexOf(currVal) === -1) {
-            sameVal.push(currVal);
-        }
-    }
-
-    // 删除重复数组里的值的链表节点
-    let position = 0;
-    let backHead;
-    while (backLink) {
-
-        let currNode;
-        if (sameVal.indexOf(backLink.val) === -1) {
-            if (position === 0) {
-                backHead = new ListNode(backLink.val);
-                currNode = backHead;
-                position++;
-            } else {
-                currNode = backHead;
-                while (currNode.next) {
-                    currNode = currNode.next;
+    while(oddArr.length !== 0 || evenArr.length !== 0){
+        if (currentlayer %2 !== 0){
+            let tempArr = [];
+            while(oddArr.length !== 0){
+                let tempNode = oddArr.pop();
+                if (tempNode !== null){
+                    tempArr.push(tempNode.val);
+                    if (tempNode.left !== null){
+                        evenArr.push(tempNode.left);
+                    }
+                    if (tempNode.right !== null) {
+                        evenArr.push(tempNode.right);
+                    }
                 }
-                currNode.next = new ListNode(backLink.val);
+            }
+            if (tempArr.length !== 0){
+                output.push(tempArr);
+                currentlayer++;
+            }
+        } else {
+            let tempArr = [];
+            while(evenArr.length !== 0){
+                let tempNode = evenArr.pop();
+                if (tempNode !== null){
+                    if (tempNode.right !== null) {
+                        oddArr.push(tempNode.right);
+                    }
+                    tempArr.push(tempNode.val);
+                    if (tempNode.left !== null){
+                        oddArr.push(tempNode.left);
+                    }
+                }
+            }
+            if (tempArr.length !== 0){
+                output.push(tempArr);
+                currentlayer++;
             }
         }
-        backLink = backLink.next;
     }
-    return backHead;
+    return output;
+
 }
 
-
-let arr1 = [1, 2, 2, 3, 3, 4, 5, 6, 6,7];
+let arr1 = [1, 1, 2, 3, 3, 4, 5];
 // let arr2 = [1, 2, 3, 4, 5];
 
-var tempLink1 = arrayToLinkNode(arr1);
+// var tempLink1 = arrayToLinkNode(arr1);
 // var tempLink2 = arrayToTreeNode(arr2);
-console.log(tempLink1);
+var tempTree = arrayToTreeNode(arr1);
+console.log(tempTree);
 
-tempLink1 = deleteDuplication(tempLink1);
-console.log(tempLink1);
+tempTreeArr = Print(tempTree);
+console.log(tempTreeArr);
 // console.log(tempLink2);
-var list1 = linkToArray(tempLink1);
-console.log(list1);
+// var list1 = linkToArray(tempLink1);
+// console.log(list1);
 // var list2 = PrintFromTopToBottom(tempLink2);
 // console.log(list2);
 
