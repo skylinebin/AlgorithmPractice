@@ -251,41 +251,74 @@ function TreeNode(x) {
     this.left = null;
     this.right = null;
 }
-function isSymmetrical(pRoot)
-{
-    let symmetrical = false;
+// function isSymmetrical(pRoot)
+// {
+//     let symmetrical = false;
+//     if (pRoot === null) {
+//         return symmetrical;
+//     }
+
+//     this.compareNode = function(leftNode, rightNode){
+//         if (leftNode === null){
+//             return rightNode === null;
+//         }
+//         if (rightNode === null){
+//             return false;
+//         }
+//         if (leftNode.val !== rightNode.val){
+//             return false;
+//         }
+//         return this.compareNode(leftNode.left, rightNode.right) && this.compareNode(leftNode.right, rightNode.left);
+//     }
+
+//     return this.compareNode(pRoot.left, pRoot.right);
+// }
+
+
+function Serialize(pRoot) {
+    // 使用前序遍历的形式访问整个二叉树
+    let nodeStr = '';
     if (pRoot === null) {
-        return symmetrical;
+        nodeStr += '@,';
+        return nodeStr;
     }
+    nodeStr += pRoot.val + ',';
+    nodeStr += Serialize(pRoot.left);
+    nodeStr += Serialize(pRoot.right);
+    return nodeStr;
+}
 
-    this.compareNode = function(leftNode, rightNode){
-        if (leftNode === null){
-            return rightNode === null;
-        }
-        if (rightNode === null){
-            return false;
-        }
-        if (leftNode.val !== rightNode.val){
-            return false;
-        }
-        return this.compareNode(leftNode.left, rightNode.right) && this.compareNode(leftNode.right, rightNode.left);
+let index = -1;
+
+function Deserialize(s) {
+    index++;
+    if (index >= s.length) {
+        return null;
     }
-
-    return this.compareNode(pRoot.left, pRoot.right);
+    let nodeArr = s.split(',');
+    let treeNode = null;
+    if (nodeArr[index] !== '@') {
+        treeNode = new TreeNode(nodeArr[index]);
+        treeNode.left = Deserialize(s);
+        treeNode.right = Deserialize(s);
+    }
+    return treeNode;
 }
 
 
 // let arr1 = [1, 1, 2, 3, 3, 4, 5];
 let arr1 = [5,6,7,8,7,6,5];
-// let arr2 = [1, 2, 3, 4, 5];
+let arr2 = [5, 4, "#", 3, "#", 2];
 
 // var tempLink1 = arrayToLinkNode(arr1);
 // var tempLink2 = arrayToTreeNode(arr2);
-var tempTree = arrayToTreeNode(arr1);
+var tempTree = arrayToTreeNode(arr2);
 console.log(tempTree);
 
-let result = isSymmetrical(tempTree);
+let result = Serialize(tempTree);
 console.log(result);
+
+console.log(Deserialize(result));
 // console.log(tempLink2);
 // var list1 = linkToArray(tempLink1);
 // console.log(list1);
