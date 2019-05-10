@@ -2,7 +2,7 @@
  * @Author: SkylineBin 
  * @Date: 2019-05-10 10:08:12 
  * @Last Modified by: SkylineBin
- * @Last Modified time: 2019-05-10 10:50:28
+ * @Last Modified time: 2019-05-10 12:13:11
  */
 
 /*******
@@ -62,8 +62,57 @@ function hanoiAdvanceProblems(layerNum, left, middle, right) {
     return processMoving(layerNum, left, middle, right, left, right);
 }
 
-let layerNum = 2;
+let layerNum = 3;
 let left = 'left';
 let middle = 'middle';
 let right = 'right';
 console.log(hanoiAdvanceProblems(layerNum, left, middle, right));
+
+
+console.log("----------------------------------------");
+console.log("----------------------------------------");
+
+// ! 非递归方法解决改进版汉诺塔问题
+// 只有四个动作
+let Action = {
+    No : 0,
+    LToM : 1,
+    MToL : 2,
+    MToR : 3,
+    RToM : 4
+}
+
+
+function hanoiAdvanceProblemsWithoutRecursion(layerNum, left, middle, right) {
+    let leftStack = [];
+    let middleStack = [];
+    let rightStack = [];
+    leftStack.push(Number.MAX_SAFE_INTEGER);
+    middleStack.push(Number.MAX_SAFE_INTEGER);
+    rightStack.push(Number.MAX_SAFE_INTEGER);
+    for (let i = layerNum; i > 0; i--) {
+        leftStack.push(i);
+    }
+    let actionRecord = [Action.No];
+    let stepCounter = 0;
+    while (rightStack.length !== layerNum + 1) {
+        stepCounter += fromStacktoTostack(actionRecord, Action.MToL, Action.LToM, leftStack, middleStack, left, middle);
+        stepCounter += fromStacktoTostack(actionRecord, Action.LToM, Action.MToL, middleStack, leftStack, middle, left);
+        stepCounter += fromStacktoTostack(actionRecord, Action.RToM, Action.MToR, middleStack, rightStack, middle, right);
+        stepCounter += fromStacktoTostack(actionRecord, Action.MToR, Action.RToM, rightStack, middleStack, right, middle);
+    }
+
+    return stepCounter;
+}
+
+function fromStacktoTostack(actionRecord, preAction, currentAction, fromStack, toStack, fromSide, toSide) {
+    if (actionRecord[0] !== preAction && fromStack[fromStack.length - 1] < toStack[toStack.length - 1]) {
+        toStack.push(fromStack.pop());
+        console.log("Move " + toStack[toStack.length - 1] + " from " + fromSide + " to " + toSide);
+        actionRecord[0] = currentAction;
+        return 1;
+    }
+    return 0;
+}
+
+console.log(hanoiAdvanceProblemsWithoutRecursion(layerNum, left, middle, right));
