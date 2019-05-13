@@ -2,7 +2,7 @@
  * @Author: SkylineBin 
  * @Date: 2019-05-10 10:08:12 
  * @Last Modified by: SkylineBin
- * @Last Modified time: 2019-05-10 12:13:11
+ * @Last Modified time: 2019-05-10 12:28:00
  */
 
 /*******
@@ -105,7 +105,9 @@ function hanoiAdvanceProblemsWithoutRecursion(layerNum, left, middle, right) {
     return stepCounter;
 }
 
+// 需要使用数组 actionRecord 来记录上一次的操作是什么，防止相邻 逆序
 function fromStacktoTostack(actionRecord, preAction, currentAction, fromStack, toStack, fromSide, toSide) {
+    // ! 判定四个动作中的哪一个合法(判定条件是 只能从小往大里面压 并且不能压相邻逆序的栈)
     if (actionRecord[0] !== preAction && fromStack[fromStack.length - 1] < toStack[toStack.length - 1]) {
         toStack.push(fromStack.pop());
         console.log("Move " + toStack[toStack.length - 1] + " from " + fromSide + " to " + toSide);
