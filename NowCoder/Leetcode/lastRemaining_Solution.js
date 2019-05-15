@@ -60,3 +60,6 @@ function LastRemaining_Solution(n, m) {
 let n = 5;
 let m = 2;
 console.log(LastRemaining_Solution(n, m));
+
+// 约瑟夫环问题 解决方案
+
