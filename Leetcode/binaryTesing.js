@@ -2,7 +2,7 @@
  * @Author: SkylineBin 
  * @Date: 2019-05-17 11:05:01 
  * @Last Modified by: SkylineBin
- * @Last Modified time: 2019-05-17 11:30:03
+ * @Last Modified time: 2019-05-17 14:37:43
  */
 
 
@@ -15,71 +15,50 @@ function TreeNode(x) {
     this.right = null;
 }
 
-function FindPath(root, expectNumber) {
-    let pathArr = [];
-    if (root === null) {
-        return pathArr;
+function Serialize(pRoot) {
+    // 使用前序遍历的形式访问整个二叉树
+    let nodeStr = '';
+    if (pRoot === null) {
+        return '#!';
     }
-
-    // 考虑使用 dfs 完成路径得到搜索
-    this.dfs = function (tempRoot, expectNumber, currentNum, currentArr, pathArr) {
-        if (tempRoot === null) {
-            currentArr = [];
-            currentNum = 0;
-            return;
-        }
-
-        let tempArr = currentArr.slice(0);
-
-        if (currentNum + tempRoot.val === expectNumber && tempRoot.left === null && tempRoot.right === null) {
-            tempArr.push(tempRoot.val);
-            pathArr.push(tempArr);
-            return;
-        } else if (currentNum + tempRoot.val < expectNumber) {
-            tempArr.push(tempRoot.val);
-            currentNum += tempRoot.val;
-            if (tempRoot.left !== null) {
-                this.dfs(tempRoot.left, expectNumber, currentNum, tempArr, pathArr);
-            }
-            if (tempRoot.right !== null) {
-                this.dfs(tempRoot.right, expectNumber, currentNum, tempArr, pathArr);
-            }
-
-        } else {
-            tempArr = [];
-            currentNum = 0;
-            return;
-        }
-    }
-    let currentNode = root;
-    let nodeArrays = [];
-    nodeArrays.push(currentNode);
-    while (nodeArrays.length !== 0) {
-        let tempNode = nodeArrays[0];
-        nodeArrays = nodeArrays.slice(1);
-        if (tempNode.left !== null) {
-            nodeArrays.push(tempNode.left);
-        }
-        if (tempNode.right !== null) {
-            nodeArrays.push(tempNode.right);
-        }
-        this.dfs(tempNode, expectNumber, 0, [], pathArr);
-    }
-
-    pathArr.sort((a, b) => {
-        return b.length - a.length;
-    })
-
-    return pathArr;
+    nodeStr += pRoot.val + '!';
+    nodeStr += Serialize(pRoot.left);
+    nodeStr += Serialize(pRoot.right);
+    return nodeStr;
 }
 
 
-let arr1 = [1,2,3,4,5,6,7];
+function Deserialize(s) {
+
+    let nodeArr = s.split('!');
+
+    this.reConnectTree = function (arrays){
+        let tempNode = arrays.shift();
+        if (tempNode === '#' || tempNode === '') {
+            return null;
+        }
+        console.log(arrays);
+        let head = new TreeNode(parseInt(tempNode));
+        head.left = this.reConnectTree(arrays);
+        head.right = this.reConnectTree(arrays);
+        return head;
+    }
+
+    return this.reConnectTree(nodeArr);
+
+
+}
+
+let arr1 = [8, 6, 10, 5, 7, 9, 11];
 
 let result = arraytoBinaryTree(arr1);
 console.log(result);
 
 console.log("------------------------------------------");
 
-let paths = FindPath(result, 6);
-console.log(paths);
+let treeStr = Serialize(result);
+console.log(treeStr);
+
+
+let reTree = Deserialize(treeStr);
+console.log(reTree);

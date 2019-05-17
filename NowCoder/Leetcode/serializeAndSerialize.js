@@ -24,28 +24,29 @@ function Serialize(pRoot) {
     // 使用前序遍历的形式访问整个二叉树
     let nodeStr = '';
     if (pRoot === null) {
-        nodeStr+= '#,';
-        return nodeStr;
+        return '#!';
     }
-    nodeStr += pRoot.val + ',';
+    nodeStr += pRoot.val + '!';
     nodeStr += Serialize(pRoot.left);
     nodeStr += Serialize(pRoot.right);
     return nodeStr;
 }
 
-let index = -1;
 
 function Deserialize(s) {
-    index++;
-    if (index >= s.length) {
-        return null;
+    let nodeArr = s.split('!');
+
+    this.reConnectTree = function (arrays) {
+        let tempNode = arrays.shift();
+        // ! arrays.shift() 实现队列抛出第一个值的操作
+        if (tempNode === '#' || tempNode === '') {
+            return null;
+        }
+        let head = new TreeNode(parseInt(tempNode));
+        head.left = this.reConnectTree(arrays);
+        head.right = this.reConnectTree(arrays);
+        return head;
     }
-    let nodeArr = s.split(',');
-    let treeNode;
-    if (nodeArr[index] !== '#') {
-        treeNode = new TreeNode(parseInt(nodeArr[index]));
-        treeNode.left = Deserialize(s);
-        treeNode.right = Deserialize(s);
-    }
-    return treeNode;
+
+    return this.reConnectTree(nodeArr);
 }
