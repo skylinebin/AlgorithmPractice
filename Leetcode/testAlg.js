@@ -246,11 +246,11 @@ const arrayToTreeNode = require('./tools/treeNode');
 
 // }
 
-function TreeNode(x) {
-    this.val = x;
-    this.left = null;
-    this.right = null;
-}
+// function TreeNode(x) {
+//     this.val = x;
+//     this.left = null;
+//     this.right = null;
+// }
 // function isSymmetrical(pRoot)
 // {
 //     let symmetrical = false;
@@ -275,34 +275,84 @@ function TreeNode(x) {
 // }
 
 
-function Serialize(pRoot) {
-    // 使用前序遍历的形式访问整个二叉树
-    let nodeStr = '';
-    if (pRoot === null) {
-        nodeStr += '@,';
-        return nodeStr;
-    }
-    nodeStr += pRoot.val + ',';
-    nodeStr += Serialize(pRoot.left);
-    nodeStr += Serialize(pRoot.right);
-    return nodeStr;
+// function Serialize(pRoot) {
+//     // 使用前序遍历的形式访问整个二叉树
+//     let nodeStr = '';
+//     if (pRoot === null) {
+//         nodeStr += '@,';
+//         return nodeStr;
+//     }
+//     nodeStr += pRoot.val + ',';
+//     nodeStr += Serialize(pRoot.left);
+//     nodeStr += Serialize(pRoot.right);
+//     return nodeStr;
+// }
+
+// let index = -1;
+
+// function Deserialize(s) {
+//     index++;
+//     if (index >= s.length) {
+//         return null;
+//     }
+//     let nodeArr = s.split(',');
+//     let treeNode = null;
+//     if (nodeArr[index] !== '@') {
+//         treeNode = new TreeNode(nodeArr[index]);
+//         treeNode.left = Deserialize(s);
+//         treeNode.right = Deserialize(s);
+//     }
+//     return treeNode;
+// }
+
+
+function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
 }
 
-let index = -1;
+function FindPath(root, expectNumber) {
+    let pathArr = [];
 
-function Deserialize(s) {
-    index++;
-    if (index >= s.length) {
-        return null;
+    // 考虑使用 dfs 完成路径得到搜索
+    this.dfs = function (tempRoot, expectNumber, currentNum, currentArr, pathArr) {
+        if (tempRoot === null) {
+            return;
+        }
+        if (currentNum + tempRoot.val === expectNumber) {
+            currentArr.push(tempRoot);
+            pathArr.push(currentArr);
+            return;
+        } else if (currentNum + tempRoot.val < expectNumber) {
+            currentArr.push(tempRoot);
+            currentNum += tempRoot.val;
+            this.dfs(tempRoot.left, expectNumber, currentNum, currentArr, pathArr);
+            this.dfs(tempRoot.right, expectNumber, currentNum, currentArr, pathArr);
+        } else {
+            return;
+        }
     }
-    let nodeArr = s.split(',');
-    let treeNode = null;
-    if (nodeArr[index] !== '@') {
-        treeNode = new TreeNode(nodeArr[index]);
-        treeNode.left = Deserialize(s);
-        treeNode.right = Deserialize(s);
+    let currentNode = root;
+    let nodeArrays = [];
+    nodeArrays.push(currentNode);
+    while (nodeArrays.length !== 0) {
+        currentNode = nodeArrays[0];
+        nodeArrays = nodeArrays.slice(1);
+        if (currentNode.left !== null) {
+            nodeArrays.push(currentNode.left);
+        }
+        if (currentNode.right !== null) {
+            nodeArrays.push(currentNode.right);
+        }
+        this.dfs(currentNode, expectNumber, 0, [], pathArr);
     }
-    return treeNode;
+
+    pathArr.sort((a, b) => {
+        return b.length - a.length;
+    })
+
+    return pathArr;
 }
 
 
@@ -312,10 +362,10 @@ let arr2 = [5, 4, "#", 3, "#", 2];
 
 // var tempLink1 = arrayToLinkNode(arr1);
 // var tempLink2 = arrayToTreeNode(arr2);
-var tempTree = arrayToTreeNode(arr2);
+var tempTree = arrayToTreeNode(arr1);
 console.log(tempTree);
 
-let result = Serialize(tempTree);
+let result = FindPath(tempTree, );
 console.log(result);
 
 console.log(Deserialize(result));
