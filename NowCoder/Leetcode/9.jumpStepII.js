@@ -16,7 +16,7 @@ function jumpFloorII(number) {
     } else if (number == 1) {
         return 1;
     } else {
-        return jumpFloorII(number - 1);
+        return 2*jumpFloorII(number - 1);
     }
 }
 
