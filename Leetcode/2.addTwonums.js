@@ -1,9 +1,18 @@
-/***
-* 
-* 
-* 
-* 
-***/
+/******
+ * 
+ * You are given two non-empty linked lists representing two non-negative integers. 
+ * The digits are stored in reverse order and each of their nodes contain a single digit.
+ * Add the two numbers and return it as a linked list.
+ * 
+ * 
+ * 
+ * Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+ * Output: 7 -> 0 -> 8
+ * Explanation: 342 + 465 = 807.
+ * 
+ * 
+ * 
+ */
 // ! 本质涉及:
 
 /**
@@ -26,7 +35,7 @@ function ListNode(val) {
     this.next = null;
 }
 
-// 思路错误,不是先算完求和再转换成链表
+// ! 思路错误,不是先算完求和再转换成链表
 var addTwoNumbersold = function (l1, l2) {
     var num1 =0;
     var num2 =0;
@@ -70,21 +79,52 @@ var addTwoNumbersold = function (l1, l2) {
 
 // Test Algorithm
 // var testNum = 5;
-console.log();
+// console.log();
 // var nodeone = arrayToLinkNode([2,4,3]);
 // var nodetwo = arrayToLinkNode([5,6,4]);
 var nodeone = arrayToLinkNode([1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]);
 var nodetwo = arrayToLinkNode([5,6,4]);
 
-console.log(addTwoNumbersold(nodeone, nodetwo));
 
-
-var addTwoNumbers = function (l1, l2) {
+let addTwoNumbers = function (l1, l2) {
     // 定义进位
-    var carry = 0;
-    var p = l1,q=l2;
-    while (p.next != null || q.next != null) {
-
+    let carry = 0;
+    let p = l1,q=l2;
+    let numStack = [];
+    let backdata = 0;
+    while (p != null || q != null) {
+        let currentNum = 0;
+        if (p != null && q != null) {
+            currentNum = p.val + q.val;
+        } else if (p != null || q != null) {
+            currentNum = p === null ? q.val : p.val;
+        }
+        currentNum = carry === 1 ? currentNum + 1 : currentNum;
+        if (currentNum > 9) {
+            currentNum = currentNum % 10;
+            carry = 1;
+        } else {
+            carry = 0;
+        }
+        numStack.push(currentNum);
+        p = p?p.next:p;
+        q = q?q.next:q;
+    }
+    if (carry) {
+        numStack.push(1);
+        carry = 0;
     }
 
+    let backLink = new ListNode(numStack.shift());
+    let tempNode = backLink;
+    while (numStack.length) {
+        tempNode.next = new ListNode(numStack.shift());
+        tempNode = tempNode.next;
+    }
+    return backLink;
 }
+
+var node1 = arrayToLinkNode([5]);
+var node2 = arrayToLinkNode([5, 6, 4]);
+
+console.log(addTwoNumbers(node1, node2));
