@@ -91,7 +91,6 @@ let addTwoNumbers = function (l1, l2) {
     let carry = 0;
     let p = l1,q=l2;
     let numStack = [];
-    let backdata = 0;
     while (p != null || q != null) {
         let currentNum = 0;
         if (p != null && q != null) {
