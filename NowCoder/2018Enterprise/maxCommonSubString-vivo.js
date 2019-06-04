@@ -2,7 +2,7 @@
  * @Author: SkylineBin 
  * @Date: 2019-06-03 21:26:42 
  * @Last Modified by: SkylineBin
- * @Last Modified time: 2019-06-03 21:59:37
+ * @Last Modified time: 2019-06-04 14:13:37
  */
 
 /*****
@@ -28,7 +28,7 @@ function maxCommonSubString(str1, str2){
         for (let j = 0; j < str2.length; j++) {
             if (str1[i] === str2[j]) {
                 let k = 1;
-                while (str1[i + k] === str2[j + k] && str1[i + k] != '' && str2[j + k] != '') {
+                while (str1[i + k] === str2[j + k] && typeof str1[i + k] === 'string' && typeof str2[j + k] === 'string') {
                     k++;
                 }
                 if (k > maxLength) {
@@ -39,12 +39,9 @@ function maxCommonSubString(str1, str2){
         }
     }
     if (maxLength > 0) {
-        console.log('????');
         backstr = str1.slice(startPosition, startPosition+maxLength);
-
     }
     return backstr;
-
 }
 
 let str1 = "abccade";
