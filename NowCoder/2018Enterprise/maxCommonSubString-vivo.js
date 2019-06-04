@@ -2,7 +2,7 @@
  * @Author: SkylineBin 
  * @Date: 2019-06-03 21:26:42 
  * @Last Modified by: SkylineBin
- * @Last Modified time: 2019-06-04 14:13:37
+ * @Last Modified time: 2019-06-04 18:34:21
  */
 
 /*****
@@ -50,6 +50,8 @@ let str2 = "dgcadde";
 console.log(maxCommonSubString(str1, str2));
 
 
-        // for (let index = startPosition; index <= maxLength; index++) {
-        //     backstr += str1[index];
-        // }
+// for (let index = startPosition; index <= maxLength; index++) {
+//     backstr += str1[index];
+// }
+
+// 使用动态规划解决
