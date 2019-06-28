@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>time</title>
+</head>
+<body>
+    <h1>
+    Current Time:
+        <div id = "currentTime"> </div>
+    </h1>
+    <script type="text/javascript">
+    function refreshTime(){
+        let time = new Date().toLocaleString()
+        document.getElementById("currentTime").innerHTML = time;
+        window.setInterval("refreshTime();",1000);
+    }
+    window.onload = refreshTime();
+    </script>
+</body>
+</html>
