@@ -2,7 +2,7 @@
  * @Author: SkylineBin 
  * @Date: 2019-06-29 09:14:26 
  * @Last Modified by: SkylineBin
- * @Last Modified time: 2019-06-29 09:43:00
+ * @Last Modified time: 2019-06-29 10:06:21
  */
 
 
@@ -47,6 +47,7 @@ var intToRoman = function(num) {
 //     }
 // }
 
+// 需要注意的是 JavaScript 中可能需要取整操作
 var intToRoman2 = function(num) {
     num = parseInt(num);
     let M = ["", "M", "MM", "MMM"];
