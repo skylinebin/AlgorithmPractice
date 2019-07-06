@@ -2,7 +2,7 @@
  * @Author: SkylineBin 
  * @Date: 2019-07-06 12:58:14 
  * @Last Modified by: SkylineBin
- * @Last Modified time: 2019-07-06 15:38:36
+ * @Last Modified time: 2019-07-06 16:38:19
  */
 
 
@@ -28,10 +28,12 @@ function roadPlaning(numN,numM,strC,arrR){
             recordArr.push(i);
         }
     }
+    // 如果没有符合同类型不互通的道路，则返回空
     if(rightArr.length === 0){
         return outSide;
     }
 
+    // 检查当前收集的道路对能否满足所有互联需求
     function check(arr){
         for(let m=1;m<=numN;m++){
             if(arr.indexOf(m)===-1){
@@ -45,6 +47,7 @@ function roadPlaning(numN,numM,strC,arrR){
     }
 
     let tempArr = [];
+    // 按照顺序进行填入检查，此处需要更改和升级
     for (let j = 0; j <=rightArr.length; j++) {
         tempArr = tempArr.concat(rightArr[j]);
         outSide.push(recordArr[j]+1);
@@ -52,8 +55,7 @@ function roadPlaning(numN,numM,strC,arrR){
             return outSide;
         }
     }
-
-
+    return outSide;
 }
 
 let numN = 4;

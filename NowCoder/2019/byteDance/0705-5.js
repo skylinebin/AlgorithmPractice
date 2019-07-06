@@ -2,7 +2,7 @@
  * @Author: SkylineBin 
  * @Date: 2019-07-06 15:47:41 
  * @Last Modified by: SkylineBin
- * @Last Modified time: 2019-07-06 16:33:24
+ * @Last Modified time: 2019-07-06 16:35:47
  */
 
 
@@ -36,6 +36,7 @@ function findMaxTime(numN,arrA, nodeB){
         tempArr[parseInt(tempRoad[0]-1)][parseInt(tempRoad[1]-1)] = parseInt(tempRoad[2]);
         tempArr[parseInt(tempRoad[1]-1)][parseInt(tempRoad[0]-1)] = parseInt(tempRoad[2]);
     }
+    // 将m,n位置填满
     function checkMandN(m,n,tempArr){
         for (let i = 0; i < tempArr.length; i++) {
             if(tempArr[i][m]!==0 && tempArr[i][n]!==0){
@@ -50,6 +51,7 @@ function findMaxTime(numN,arrA, nodeB){
     }
     for (let m = 0; m < tempArr.length; m++) {
         for (let n = 0; n < tempArr[0].length; n++) {
+            // 针对那些空位置，填满
             if(m !==n && tempArr[m][n] ===  0 && tempArr[n][m]===0){
                 checkMandN(m,n,tempArr);
             }
@@ -60,6 +62,7 @@ function findMaxTime(numN,arrA, nodeB){
     let node;
     for (let j = 0; j < nodeB.length; j++) {
         node = tempArr[parseInt(nodeB[j]-1)];
+        // 要求最大时延的，直接查表
         node = node.sort(function(a,b){return a-b});
         outside.push(node[node.length-1]);
     }

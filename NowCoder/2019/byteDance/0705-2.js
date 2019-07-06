@@ -2,7 +2,7 @@
  * @Author: SkylineBin 
  * @Date: 2019-07-05 21:26:33 
  * @Last Modified by: SkylineBin
- * @Last Modified time: 2019-07-05 21:41:54
+ * @Last Modified time: 2019-07-06 16:40:27
  */
 
 
@@ -19,6 +19,7 @@ function findDays(arrs){
     let startDate = new Date('2012-3-12');
     this.calDay = function(tempDate){
         let newDate = new Date(String(tempDate.join('-')));
+        // 以毫秒计数，要除以1000来计算间隔的天数
         return parseInt((newDate-startDate)/24/60/60/1000);
     }
     for (let i = 0; i < arrs.length; i++) {

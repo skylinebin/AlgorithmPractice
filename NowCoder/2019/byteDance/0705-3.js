@@ -2,7 +2,7 @@
  * @Author: SkylineBin 
  * @Date: 2019-07-05 21:42:07 
  * @Last Modified by: SkylineBin
- * @Last Modified time: 2019-07-05 22:06:19
+ * @Last Modified time: 2019-07-06 16:39:42
  */
 
 /****
@@ -12,6 +12,8 @@
  * n 门课，每门课 ai 个人选
  * 
  * 求最少班级数
+ * 
+ * 求最大公约数
  * 
  */
 
@@ -25,6 +27,7 @@ function findMinClass(numArr){
         }
     }
     let minCommon = 1;
+    // 求n个数的最大公约数
     for (let j = 1; j <=minNum; j++) {
         let state = true;
         for (let m = 0; m < n; m++) {
@@ -36,6 +39,7 @@ function findMinClass(numArr){
             minCommon = j;
         }
     }
+    // 根据最大公约数计算需要开班的个数
     for (let k = 0; k < n; k++) {
         minClass += parseInt(numArr[k]/minCommon);
     }

@@ -2,7 +2,7 @@
  * @Author: SkylineBin 
  * @Date: 2019-07-05 20:45:34 
  * @Last Modified by: SkylineBin
- * @Last Modified time: 2019-07-05 21:23:58
+ * @Last Modified time: 2019-07-06 16:43:38
  */
 
 
@@ -25,18 +25,22 @@ function judgeWhoWin(arrB,arrD){
     let stateB=-1,stateD=-1;
     let outside;
     while(i<26){
+        // 在场面的牌中找先手的牌
         stateB = datas.indexOf(arrB[i]);
         if(stateB > -1){
+            // 找到先手的牌就对场面的牌进行处理
             lenB += parseInt(datas.length + 1 - stateB);
             if(stateB === 0){
+                // 如果位置是第一张牌，牌面清空
                 datas = [];
             }else{
                 datas = datas.slice(0, stateB);
             }
-            
         }else{
+            // 没找到则先手的牌置入场中
             datas.push(arrB[i]);
         }
+        // 要在这里对后手搜索，因为先手可能影响牌面
         stateD = datas.indexOf(arrD[i]);
         if(stateD > -1){
             lenD += parseInt(datas.length + 1 - stateD);
