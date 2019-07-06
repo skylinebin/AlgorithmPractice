@@ -2,7 +2,7 @@
  * @author SkylineBin
  * @time 2018-10-6
  * @function use javascript to create SelectionSort
- *
+ * 选择排序
  * @Algorithm_bigO O(N ^ 2) 
  *  N is the length of arrays
  * 

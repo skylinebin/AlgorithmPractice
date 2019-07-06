@@ -2,7 +2,7 @@
  * @author SkylineBin
  * @time 2018-10-6
  * @function create MergeSort by JavaScript
- * 
+ * 归并排序
  * @Algorithm_bigO 
  *  O(N * log(N))
  * 

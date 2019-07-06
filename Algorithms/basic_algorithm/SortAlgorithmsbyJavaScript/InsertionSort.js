@@ -2,7 +2,7 @@
  * @author SkylineBin
  * @time 2018-10-6
  * @function create InsertionSort by JavaScript
- * 
+ * 实现插入排序
  * @Algorithm_bigO 
  *  best_bigO = O(N)
  *  worst_bigO = O(N^2) 
