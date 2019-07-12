@@ -57,3 +57,21 @@ function Merge(pHead1, pHead2)
     }
     return outputLink;
 }
+
+
+// 递归版本的做法  
+function Merge2(pHead1, pHead2){
+    if(pHead1 === null){
+        return pHead2;
+    }
+    if(pHead2 === null){
+        return pHead1;
+    }
+    if(pHead1.val <= pHead2.val){
+        pHead1.next = Merge2(pHead1.next,pHead2);
+        return pHead1;
+    }else {
+        pHead2.next = Merge2(pHead1,pHead2.next);
+        return pHead2;
+    }
+}
