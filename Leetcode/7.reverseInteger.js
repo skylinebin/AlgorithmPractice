@@ -2,7 +2,7 @@
  * @Author: SkylineBin 
  * @Date: 2019-05-23 16:27:45 
  * @Last Modified by: SkylineBin
- * @Last Modified time: 2019-05-23 16:47:40
+ * @Last Modified time: 2019-07-14 20:57:03
  */
 
 /*****
@@ -78,3 +78,21 @@ var reverse2 = function (x) {
     backNum = signLabel ? backNum : -backNum;
     return backNum;
 };
+
+
+
+const reduceMap = (fn, thisArg /*真想去掉thisArg这个参数*/ ) => {
+    return (list) => {
+        // 不怎么愿意写下面这两个判断条件
+        if (typeof fn !== 'function') {
+            throw new TypeError(fn + 'is not a function')  
+        }
+        if (!Array.isArray(list)) {
+            throw new TypeError('list must be a Array')
+        }
+        if (list.length === 0) return []
+        return list.reduce((acc, value, index) => {
+            return acc.concat([ fn.call(thisArg, value, index, list) ])
+        }, [])
+    }
+}
