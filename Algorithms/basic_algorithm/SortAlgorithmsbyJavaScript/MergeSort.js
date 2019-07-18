@@ -25,7 +25,7 @@ function sortProgress(arrays, Ln, Rn) {
     sortProgress(arrays, midn + 1, Rn);
     merge(arrays, Ln, midn, Rn);
     console.log(arrays);
-}.
+}
 
 function merge(arrays, Ln, midn, Rn) {
     let temparrays = new Array();
