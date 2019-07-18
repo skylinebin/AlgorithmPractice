@@ -19,9 +19,16 @@ btn.onclick = function (){
 }
 
 let EventEmitter = {
-    
-    on(){
+    on(e){
         let btn = document.getElementById('buttom');
-        
+        btn.addEventListener(e,function(){
+            console.log(this.id);
+        },true);
+    },
+    trigger(e){
+        let btn = document.getElementById('buttom');
+        btn.dispatchEvent(e,function(){
+            console.log(this.id);
+        },true);
     }
 }
