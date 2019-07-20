@@ -2,7 +2,7 @@
  * @Author: SkylineBin 
  * @Date: 2019-05-25 15:53:51 
  * @Last Modified by: SkylineBin
- * @Last Modified time: 2019-05-25 16:20:12
+ * @Last Modified time: 2019-07-20 21:59:21
  */
 
 
@@ -70,3 +70,32 @@ let threeSum = function (nums) {
 
 let nums = [-1, 0, 1, 2, -1, -4];
 console.log(threeSum(nums));
+
+// best answer
+
+let threeSum2 = function (nums) {
+    let output = [];
+    nums.sort((a,b) => a-b);
+    for (let i = 0; i < nums.length; i++) {
+        if (i!==0 && nums[i] === nums[i-1]) {
+            continue;
+        }
+        let j = i+1;
+        let k = nums.length - 1;
+        while(j < k){
+            let tempSum = nums[i] + nums[j] + nums[k];
+            if(tempSum === 0){
+                output.push([nums[i], nums[j], nums[k]]);
+                j++;
+                while(j<k && nums[j]===nums[j-1]){
+                    j++;
+                }
+            } else if(tempSum < 0){
+                j++;
+            } else {
+                k--;
+            }
+        }
+    }
+    return output;
+}
