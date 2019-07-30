@@ -25,6 +25,14 @@ function pop() {
     }
 }
 
+function isEmpty(){
+    if(stack2.length===0 && stack1.length===0){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 /* 
  * 涉及理论： 队列
  * 普通解法： 遍历
