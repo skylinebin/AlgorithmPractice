@@ -18,6 +18,7 @@ function MoreThanHalfNum_Solution(numbers) {
     }
     var countArr = [];
     for (let i = 0; i < numbers.length; i++) {
+        // countArr[numbers[i]] = countArr[numbers[i]]+1 || 1;
         if (countArr[numbers[i]]) {
             countArr[numbers[i]] = countArr[numbers[i]] + 1;
             if (countArr[numbers[i]] > numbers.length/2) {
