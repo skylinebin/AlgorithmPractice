@@ -55,11 +55,41 @@ console.log(processData(numN,numT,dataN));
 
 
 
+// 分糖果问题  
+function zeroOnePackage(datas,values,maxValue){
+    let len = values.length;
+    let dps = [];
+    for (let i = 0; i <=len; i++) {
+        dps[i]=[];
+        dps[i][0]=0;
+    }
+    let a,b;
+    for (let j = 0; j <=len; j++) {
+        for (let k = 0; k <=maxValue; k++) {
+            if (j===0 || k===0) {
+                dps[j][k]=0;
+            }else if(datas[j-1]<k){
+                a = values[j-1]+dps[j-1][k-datas[j-1]];
+                b = dps[j-1][k];
+                dps[j][k]= a>b?a:b;
+            }else{
+                dps[j][k]=dps[j-1][k];
+            }
+        }
+        
+    }
+    return dps[len][maxValue];
+}
 
 
+let datas = [26,5,6,15,37,63];
+let values = [100,1,2,25,48,97];
+let maxValue = 100;
+
+console.log(zeroOnePackage(datas,values,maxValue));
 
 
-
+// 多重背包问题
 
 
 
@@ -101,20 +131,20 @@ console.log(processData(numN,numT,dataN));
 // }
 
 
-let initdata,numN,numT,temp;
-while(initdata= read_line()){
-    initdata = initdata.split(' ');
-	numN = parseInt(initdata[0]);
-	numT = parseInt(initdata[1]);
-    let temp = numN;
-    let dataN = [];
-    while(temp>0){
-        let tempC = []
-        tempC.push(readInt());
-        tempC.push(readInt());
-        tempC.push(readInt());
-        dataN.push(tempC);
-        temp--;
-    }
-    print(processData(numN,numT,dataN))
-}
+// let initdata,numN,numT,temp;
+// while(initdata= read_line()){
+//     initdata = initdata.split(' ');
+// 	numN = parseInt(initdata[0]);
+// 	numT = parseInt(initdata[1]);
+//     let temp = numN;
+//     let dataN = [];
+//     while(temp>0){
+//         let tempC = []
+//         tempC.push(readInt());
+//         tempC.push(readInt());
+//         tempC.push(readInt());
+//         dataN.push(tempC);
+//         temp--;
+//     }
+//     print(processData(numN,numT,dataN))
+// }
