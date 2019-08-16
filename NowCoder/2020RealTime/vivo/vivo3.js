@@ -48,9 +48,13 @@ function solution(arr1, arr2, arr3) {
 }
 
 
-let arr1 = [1000];
-let arr2 = [200,600,100,180,300,450];
-let arr3 = [6,10,3,4,5,8];
+// let arr1 = [1000];
+// let arr2 = [200,600,100,180,300,450];
+// let arr3 = [6,10,3,4,5,8];
+
+let arr1 = [20];
+let arr2 = [5,3,2,10,4,8];
+let arr3 = [4,8,15,1,6,3];
 
 
 console.log(solution(arr1, arr2, arr3));
