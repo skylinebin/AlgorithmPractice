@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>KeyFrame Clock</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+
+        .clock {
+            width: 3px;
+            height: 100px;
+            background-color: #000;
+            margin: 20px auto;
+            position: relative;
+            animation: run 1s ease-in-out alternate infinite;
+        }
+
+        @keyframes run {
+            0% {
+                transform: rotate(30deg);
+                transform-origin: top center;
+            }
+
+            100% {
+                transform: rotate(-30deg);
+                transform-origin: top center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class=clock></div>
+    </div>
+</body>
+
+</html>
