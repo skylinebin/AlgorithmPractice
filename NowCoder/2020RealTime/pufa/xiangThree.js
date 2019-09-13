@@ -1,3 +1,6 @@
+// 大数相加
+// big datas add function
+
 function addTwoNums(num1,num2){
     let res='';
     let copyN1=String(num1).split('');
